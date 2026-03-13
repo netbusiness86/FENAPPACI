@@ -273,6 +273,68 @@ const translations: Record<string, Record<Language, string>> = {
   'validation.quantity': { fr: 'La quantité est requise', en: 'Quantity is required' },
   'validation.destination': { fr: 'La destination est requise', en: 'Destination is required' },
 
+  // Navigation - Market
+  'nav.market': { fr: 'Marché', en: 'Market' },
+
+  // Market Prices Page
+  'market.live_badge': { fr: 'Données en Temps Réel', en: 'Live Data' },
+  'market.title': { fr: 'Prix des Matières Premières Agricoles', en: 'Agricultural Commodity Prices' },
+  'market.subtitle': {
+    fr: 'Suivez les prix du marché mondial pour les principales cultures agricoles d\'Afrique de l\'Ouest.',
+    en: 'Track global market prices for major West African agricultural commodities.'
+  },
+  'market.rising': { fr: 'En hausse', en: 'Rising' },
+  'market.falling': { fr: 'En baisse', en: 'Falling' },
+  'market.commodities': { fr: 'Produits', en: 'Commodities' },
+  'market.last_updated': { fr: 'Dernière mise à jour', en: 'Last updated' },
+  'market.refresh_in': { fr: 'Actualisation dans', en: 'Refresh in' },
+  'market.refresh': { fr: 'Actualiser', en: 'Refresh' },
+  'market.initializing': {
+    fr: 'Initialisation des données de marché...',
+    en: 'Initializing market data...'
+  },
+  'market.disclaimer': {
+    fr: 'Les prix affichés sont indicatifs et basés sur les marchés internationaux. Ils peuvent différer des prix locaux.',
+    en: 'Displayed prices are indicative and based on international markets. They may differ from local prices.'
+  },
+
+  // Market Insights
+  'market.insights.title': { fr: 'Analyse du Marché', en: 'Market Insights' },
+  'market.insights.subtitle': {
+    fr: 'Tendances et opportunités pour les exportateurs ivoiriens',
+    en: 'Trends and opportunities for Ivorian exporters'
+  },
+  'market.insight.cocoa.title': { fr: 'Demande Mondiale de Cacao', en: 'Global Cocoa Demand' },
+  'market.insight.cocoa.desc': {
+    fr: 'La Côte d\'Ivoire est le premier producteur mondial de cacao avec plus de 40% de la production globale. La demande mondiale reste soutenue par la croissance des marchés asiatiques et la montée du chocolat premium.',
+    en: 'Ivory Coast is the world\'s leading cocoa producer with over 40% of global output. Global demand remains strong driven by Asian market growth and the rise of premium chocolate.'
+  },
+  'market.insight.cocoa.trend': { fr: 'Forte demande — opportunité d\'exportation', en: 'High demand — export opportunity' },
+  'market.insight.cashew.title': { fr: 'Tendances Noix de Cajou', en: 'Cashew Market Trends' },
+  'market.insight.cashew.desc': {
+    fr: 'La Côte d\'Ivoire est le premier exportateur africain de noix de cajou brutes. Les marchés asiatiques, notamment l\'Inde et le Vietnam, sont les principaux transformateurs. La transformation locale est en forte croissance.',
+    en: 'Ivory Coast is Africa\'s top raw cashew exporter. Asian markets, notably India and Vietnam, are key processors. Local processing is growing rapidly.'
+  },
+  'market.insight.cashew.trend': { fr: 'Marché en expansion mondiale', en: 'Globally expanding market' },
+  'market.insight.export.title': { fr: 'Opportunités d\'Exportation', en: 'Export Opportunities' },
+  'market.insight.export.desc': {
+    fr: 'L\'Afrique de l\'Ouest offre d\'importantes opportunités d\'exportation vers l\'Europe, l\'Amérique du Nord et l\'Asie. La FENAPPACI facilite les connexions directes entre producteurs locaux et acheteurs internationaux.',
+    en: 'West Africa offers significant export opportunities to Europe, North America and Asia. FENAPPACI facilitates direct connections between local producers and international buyers.'
+  },
+  'market.insight.export.trend': { fr: 'Accès direct aux marchés internationaux', en: 'Direct access to international markets' },
+
+  // Market CTA
+  'market.cta.title': { fr: 'Intéressé par nos Produits ?', en: 'Interested in Our Products?' },
+  'market.cta.desc': {
+    fr: 'Contactez-nous pour obtenir des prix à l\'exportation personnalisés et découvrir comment la FENAPPACI peut répondre à vos besoins d\'approvisionnement.',
+    en: 'Contact us for personalized export pricing and discover how FENAPPACI can meet your sourcing needs.'
+  },
+  'market.cta.btn': { fr: 'Demander un Devis', en: 'Request a Quote' },
+
+  // Admin Market
+  'admin.market.title': { fr: 'Gestion des Prix du Marché', en: 'Market Price Management' },
+  'admin.market.subtitle': { fr: 'Mettre à jour les prix des matières premières', en: 'Update commodity prices' },
+
   // Footer
   'footer.desc': {
     fr: 'Fédération Nationale des Producteurs & Promoteurs Agricoles de Côte d\'Ivoire.',

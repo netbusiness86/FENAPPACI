@@ -22,6 +22,7 @@ export function Navbar() {
     { href: '/', label: t('nav.home') },
     { href: '/about', label: t('nav.about') },
     { href: '/products', label: t('nav.products') },
+    { href: '/marche', label: t('nav.market') },
     { href: '/investment', label: t('nav.investment') },
     { href: '/partnership', label: t('nav.partnership') },
     { href: '/export', label: t('nav.export') },

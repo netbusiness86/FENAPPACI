@@ -17,6 +17,7 @@ import Partnership from "@/pages/Partnership";
 import Export from "@/pages/Export";
 import Contact from "@/pages/Contact";
 import Admin from "@/pages/Admin";
+import MarketPrices from "@/pages/MarketPrices";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -61,6 +62,9 @@ function Router() {
       </Route>
       <Route path="/contact">
         <Layout><Contact /></Layout>
+      </Route>
+      <Route path="/marche">
+        <Layout><MarketPrices /></Layout>
       </Route>
       <Route>
         <Layout><NotFound /></Layout>
