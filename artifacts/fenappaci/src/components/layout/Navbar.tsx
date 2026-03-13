@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, Globe, Phone } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
@@ -11,9 +11,7 @@ export function Navbar() {
   const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -22,41 +20,46 @@ export function Navbar() {
     { href: '/', label: t('nav.home') },
     { href: '/about', label: t('nav.about') },
     { href: '/products', label: t('nav.products') },
-    { href: '/marche', label: t('nav.market') },
+    { href: '/export', label: t('nav.export') },
     { href: '/investment', label: t('nav.investment') },
     { href: '/partnership', label: t('nav.partnership') },
-    { href: '/export', label: t('nav.export') },
+    { href: '/marche', label: t('nav.market') },
+    { href: '/news', label: t('nav.news') },
     { href: '/contact', label: t('nav.contact') },
   ];
 
+  const isActive = (href: string) => location === href || (href !== '/' && location.startsWith(href));
+
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-nav py-3' : 'bg-transparent py-5'
+    <header
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'top-0 glass-nav py-3 shadow-sm' : 'top-8 bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          
+        <div className="flex items-center justify-between gap-4">
+
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
             <img
               src="/images/fenappaci-logo-transparent.png"
-              alt="FENAPPACI Logo"
-              className="h-14 w-auto drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+              alt="FENAPPACI"
+              className={`h-12 w-auto drop-shadow transition-all duration-300 group-hover:scale-105 ${isScrolled ? '' : 'brightness-0 invert'}`}
             />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-1 flex-wrap">
             {navLinks.map((link) => (
-              <Link 
-                key={link.href} 
+              <Link
+                key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-secondary ${
-                  location === link.href 
-                    ? 'text-secondary' 
-                    : isScrolled ? 'text-foreground/80' : 'text-white/90 drop-shadow-sm hover:text-white'
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                  isActive(link.href)
+                    ? 'text-orange-400 font-semibold'
+                    : isScrolled
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-orange-50'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {link.label}
@@ -65,37 +68,35 @@ export function Navbar() {
           </nav>
 
           {/* Actions */}
-          <div className="hidden lg:flex items-center gap-4">
-            <button 
+          <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
+            <button
               onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-              className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
-                isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-white/80'
+              className={`flex items-center gap-1.5 text-sm font-bold transition-colors px-3 py-2 rounded-lg ${
+                isScrolled ? 'text-gray-700 hover:text-orange-600 hover:bg-orange-50' : 'text-white hover:bg-white/10'
               }`}
             >
               <Globe className="w-4 h-4" />
-              {lang.toUpperCase()}
+              {lang === 'fr' ? 'FR | EN' : 'EN | FR'}
             </button>
             <Link href="/request">
-              <Button className="bg-secondary hover:bg-secondary/90 text-white rounded-full shadow-lg shadow-secondary/20 font-semibold px-6">
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-md px-5 h-9 text-sm font-semibold">
                 {t('nav.request_quote')}
               </Button>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center gap-4">
-            <button 
+          {/* Mobile row */}
+          <div className="xl:hidden flex items-center gap-3">
+            <button
               onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-              className={`flex items-center gap-1 text-sm font-medium ${
-                isScrolled ? 'text-foreground' : 'text-white'
-              }`}
+              className={`flex items-center gap-1 text-sm font-bold ${isScrolled ? 'text-gray-700' : 'text-white'}`}
             >
               <Globe className="w-4 h-4" />
               {lang.toUpperCase()}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={isScrolled ? 'text-foreground' : 'text-white'}
+              className={isScrolled ? 'text-gray-700' : 'text-white'}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -103,26 +104,30 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b shadow-xl p-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.href} 
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`block px-4 py-2 rounded-md text-base font-medium ${
-                location === link.href ? 'bg-primary/10 text-primary' : 'text-foreground/80 hover:bg-muted'
-              }`}
-            >
-              {link.label}
+        <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b shadow-xl">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-xl text-sm font-medium ${
+                  isActive(link.href)
+                    ? 'bg-orange-50 text-orange-600 font-semibold'
+                    : 'text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link href="/request" onClick={() => setMobileMenuOpen(false)}>
+              <Button className="w-full mt-2 bg-orange-500 hover:bg-orange-600 text-white rounded-full">
+                {t('nav.request_quote')}
+              </Button>
             </Link>
-          ))}
-          <Link href="/request" onClick={() => setMobileMenuOpen(false)}>
-            <Button className="w-full bg-secondary hover:bg-secondary/90 text-white mt-2">
-              {t('nav.request_quote')}
-            </Button>
-          </Link>
+          </div>
         </div>
       )}
     </header>

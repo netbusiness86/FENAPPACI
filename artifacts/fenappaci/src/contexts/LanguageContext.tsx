@@ -273,8 +273,38 @@ const translations: Record<string, Record<Language, string>> = {
   'validation.quantity': { fr: 'La quantité est requise', en: 'Quantity is required' },
   'validation.destination': { fr: 'La destination est requise', en: 'Destination is required' },
 
-  // Navigation - Market
+  // Navigation - additional
   'nav.market': { fr: 'Marché', en: 'Market' },
+  'nav.news': { fr: 'Actualités', en: 'News' },
+
+  // Home hero additions
+  'home.hero.company_type': {
+    fr: 'Production & Exportation Agricole de Côte d\'Ivoire',
+    en: 'Agricultural Production & Export from Ivory Coast'
+  },
+  'home.btn.request': { fr: 'Demander un Achat', en: 'Request Purchase' },
+  'home.why.badge': { fr: 'Pourquoi FENAPPACI', en: 'Why FENAPPACI' },
+  'home.products.badge': { fr: 'Catalogue Produits', en: 'Product Catalog' },
+  'home.products.title': { fr: 'Nos Produits Agricoles', en: 'Our Agricultural Products' },
+  'home.products.all': { fr: 'Voir tout le catalogue', en: 'View full catalog' },
+  'home.testimonials.badge': { fr: 'Témoignages', en: 'Testimonials' },
+  'home.testimonials.title': { fr: 'Ce que Disent nos Partenaires', en: 'What Our Partners Say' },
+  'home.activities.label': { fr: 'Nos domaines d\'activité', en: 'Our areas of activity' },
+  'home.cta.contact': { fr: 'Nous Contacter', en: 'Contact Us' },
+
+  // News & Campaigns
+  'news.title': { fr: 'Actualités & Campagnes', en: 'News & Campaigns' },
+  'news.subtitle': {
+    fr: 'Découvrez les dernières nouvelles, campagnes et opportunités de FENAPPACI.',
+    en: 'Discover the latest news, campaigns, and opportunities from FENAPPACI.'
+  },
+  'news.read_more': { fr: 'Lire la suite', en: 'Read more' },
+  'news.cta.title': { fr: 'Restez Informé des Opportunités', en: 'Stay Informed About Opportunities' },
+  'news.cta.desc': {
+    fr: 'Contactez-nous pour recevoir nos bulletins d\'information sur les campagnes agricoles et les opportunités d\'export.',
+    en: 'Contact us to receive our newsletters on agricultural campaigns and export opportunities.'
+  },
+  'news.cta.btn': { fr: 'Nous Contacter', en: 'Contact Us' },
 
   // Market Prices Page
   'market.live_badge': { fr: 'Données en Temps Réel', en: 'Live Data' },
