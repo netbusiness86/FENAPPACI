@@ -167,29 +167,84 @@
   animation-play-state: paused;
 }
 
-/* Logo rotation animations */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+/* ── 3D Logo rotation animations ── */
+@keyframes spin-3d {
+  0%   { transform: perspective(500px) rotateY(0deg); }
+  100% { transform: perspective(500px) rotateY(360deg); }
 }
-@keyframes spin-very-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+@keyframes spin-3d-slow {
+  0%   { transform: perspective(500px) rotateY(0deg); }
+  100% { transform: perspective(500px) rotateY(360deg); }
+}
+@keyframes spin-3d-card {
+  0%   { transform: perspective(300px) rotateY(0deg); }
+  100% { transform: perspective(300px) rotateY(360deg); }
 }
 .logo-spin {
-  animation: spin-slow 18s linear infinite;
+  animation: spin-3d 10s linear infinite;
   will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
 }
 .logo-spin-slow {
-  animation: spin-very-slow 30s linear infinite;
+  animation: spin-3d-slow 20s linear infinite;
   will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
 }
 .logo-spin-card {
-  animation: spin-very-slow 24s linear infinite;
+  animation: spin-3d-card 16s linear infinite;
   will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
 }
 .logo-spin:hover,
 .logo-spin-slow:hover,
 .logo-spin-card:hover {
   animation-play-state: paused;
+}
+
+/* ── Agricultural particle float ── */
+@keyframes float-particle {
+  0%   { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.8; }
+  85%  { opacity: 0.6; }
+  100% { transform: translateY(-110vh) translateX(30px) rotate(360deg); opacity: 0; }
+}
+.agri-particle {
+  position: absolute;
+  pointer-events: none;
+  animation: float-particle linear infinite;
+  font-size: 1.5rem;
+  will-change: transform, opacity;
+  z-index: 5;
+}
+
+/* ── Export route dash animation ── */
+@keyframes draw-arc {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+.export-arc {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-arc 2s ease-out forwards;
+}
+@keyframes travel-dot {
+  0%   { offset-distance: 0%; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* ── Pulse dot ── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+.pulse-ring-delay {
+  animation: pulse-ring 2s ease-out 0.6s infinite;
 }

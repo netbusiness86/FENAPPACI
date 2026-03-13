@@ -75,6 +75,34 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-br from-orange-900/85 via-orange-700/70 to-green-900/60" />
         </div>
 
+        {/* Agricultural floating particles */}
+        {[
+          { emoji: '🌿', left: '5%',  delay: '0s',  duration: '12s', size: '1.8rem' },
+          { emoji: '🌾', left: '15%', delay: '2s',  duration: '14s', size: '1.4rem' },
+          { emoji: '☕', left: '25%', delay: '5s',  duration: '11s', size: '1.6rem' },
+          { emoji: '🍃', left: '38%', delay: '1s',  duration: '13s', size: '1.2rem' },
+          { emoji: '🌰', left: '50%', delay: '7s',  duration: '15s', size: '1.5rem' },
+          { emoji: '🌴', left: '62%', delay: '3s',  duration: '12s', size: '1.7rem' },
+          { emoji: '🍫', left: '75%', delay: '9s',  duration: '14s', size: '1.4rem' },
+          { emoji: '🌿', left: '85%', delay: '4s',  duration: '11s', size: '1.3rem' },
+          { emoji: '🌸', left: '92%', delay: '6s',  duration: '13s', size: '1.6rem' },
+          { emoji: '🍌', left: '45%', delay: '11s', duration: '16s', size: '1.4rem' },
+        ].map((p, i) => (
+          <span
+            key={i}
+            className="agri-particle select-none"
+            style={{
+              left: p.left,
+              bottom: '-5%',
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+              fontSize: p.size,
+            }}
+          >
+            {p.emoji}
+          </span>
+        ))}
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
