@@ -13,7 +13,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <img
-                src="/images/fenappaci-logo.png"
+                src="/images/fenappaci-logo-transparent.png"
                 alt="FENAPPACI Logo"
                 className="h-16 w-auto brightness-0 invert"
               />

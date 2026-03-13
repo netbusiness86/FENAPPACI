@@ -40,7 +40,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <img
-              src="/images/fenappaci-logo.png"
+              src="/images/fenappaci-logo-transparent.png"
               alt="FENAPPACI Logo"
               className="h-14 w-auto drop-shadow-md group-hover:scale-105 transition-transform duration-300"
             />
