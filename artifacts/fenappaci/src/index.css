@@ -166,3 +166,30 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Logo rotation animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes spin-very-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.logo-spin {
+  animation: spin-slow 18s linear infinite;
+  will-change: transform;
+}
+.logo-spin-slow {
+  animation: spin-very-slow 30s linear infinite;
+  will-change: transform;
+}
+.logo-spin-card {
+  animation: spin-very-slow 24s linear infinite;
+  will-change: transform;
+}
+.logo-spin:hover,
+.logo-spin-slow:hover,
+.logo-spin-card:hover {
+  animation-play-state: paused;
+}

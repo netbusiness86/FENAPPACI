@@ -26,11 +26,14 @@ export function Footer() {
           {/* Brand column */}
           <div className="space-y-5 lg:col-span-1">
             <div>
-              <img
-                src="/images/fenappaci-logo-transparent.png"
-                alt="FENAPPACI Logo"
-                className="h-16 w-auto brightness-0 invert"
-              />
+              <div className="inline-block rounded-full overflow-hidden border-2 border-green-600 bg-white shadow-lg shadow-green-900/30"
+                style={{ width: 72, height: 72 }}>
+                <img
+                  src="/images/fenappaci-logo-transparent.png"
+                  alt="FENAPPACI Logo"
+                  className="w-full h-full object-cover logo-spin-slow"
+                />
+              </div>
             </div>
             <p className="text-green-200 text-sm leading-relaxed">
               {t('footer.desc')}

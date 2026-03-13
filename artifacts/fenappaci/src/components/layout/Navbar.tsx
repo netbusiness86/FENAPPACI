@@ -41,11 +41,16 @@ export function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <img
-              src="/images/fenappaci-logo-transparent.png"
-              alt="FENAPPACI"
-              className={`h-12 w-auto drop-shadow transition-all duration-300 group-hover:scale-105 ${isScrolled ? '' : 'brightness-0 invert'}`}
-            />
+            <div className={`rounded-full overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
+              isScrolled ? 'border-orange-200 bg-white shadow-md' : 'border-white/30 bg-white/10 backdrop-blur-sm'
+            }`}
+            style={{ width: 46, height: 46 }}>
+              <img
+                src="/images/fenappaci-logo-transparent.png"
+                alt="FENAPPACI"
+                className="w-full h-full object-cover logo-spin group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
           </Link>
 
           {/* Desktop Nav */}

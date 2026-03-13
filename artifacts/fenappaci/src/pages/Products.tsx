@@ -87,6 +87,14 @@ export default function Products() {
                         {t('products.available')}
                       </Badge>
                     </div>
+                    {/* Rotating FENAPPACI logo badge */}
+                    <div className="absolute top-3 right-3 w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-lg bg-white opacity-90 group-hover:opacity-100 transition-opacity">
+                      <img
+                        src="/images/fenappaci-logo-transparent.png"
+                        alt="FENAPPACI"
+                        className="w-full h-full object-cover logo-spin-card"
+                      />
+                    </div>
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="text-xs font-semibold text-secondary uppercase tracking-wider mb-2">
