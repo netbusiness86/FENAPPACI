@@ -15,7 +15,7 @@ export default function Products() {
 
   const filteredProducts = products.filter(p => {
     const matchesTab = activeTab === 'all' || p.category === activeTab;
-    const matchesSearch = p.name[lang].toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = p.name[lang].toLowerCase().includes(searchQuery.toLowerCase()) ||
                           p.description[lang].toLowerCase().includes(searchQuery.toLowerCase());
     return matchesTab && matchesSearch;
   });
@@ -30,8 +30,7 @@ export default function Products() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* hero products agriculture fresh */}
-      <PageHero 
+      <PageHero
         title={t('products.title')}
         subtitle={t('products.subtitle')}
         backgroundImage="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1920&h=1080&fit=crop"
@@ -39,7 +38,7 @@ export default function Products() {
 
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Filters */}
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6 mb-12">
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
@@ -48,8 +47,8 @@ export default function Products() {
                   key={cat.id}
                   onClick={() => setActiveTab(cat.id as Category | 'all')}
                   className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                    activeTab === cat.id 
-                      ? 'bg-primary text-white shadow-md' 
+                    activeTab === cat.id
+                      ? 'bg-primary text-white shadow-md'
                       : 'bg-white text-muted-foreground border border-gray-200 hover:border-primary hover:text-primary'
                   }`}
                 >
@@ -62,9 +61,9 @@ export default function Products() {
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-gray-400" />
               </div>
-              <Input 
+              <Input
                 type="text"
-                placeholder="Search products..."
+                placeholder={t('products.search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 h-12 bg-white rounded-full border-gray-200 focus:ring-primary focus:border-primary"
@@ -78,9 +77,9 @@ export default function Products() {
               {filteredProducts.map(product => (
                 <div key={product.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300 group flex flex-col">
                   <div className="relative h-56 overflow-hidden">
-                    <img 
-                      src={product.image} 
-                      alt={product.name[lang]} 
+                    <img
+                      src={product.image}
+                      alt={product.name[lang]}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute top-4 left-4">
@@ -97,7 +96,7 @@ export default function Products() {
                     <p className="text-muted-foreground text-sm flex-grow mb-6 line-clamp-3">
                       {product.description[lang]}
                     </p>
-                    <Link href={`/request?product=${encodeURIComponent(product.name.en)}`}>
+                    <Link href={`/request?product=${encodeURIComponent(product.name.fr)}`}>
                       <Button className="w-full bg-foreground hover:bg-primary text-white transition-colors group-hover:shadow-md">
                         <ShoppingCart className="w-4 h-4 mr-2" />
                         {t('products.request')}
@@ -110,8 +109,8 @@ export default function Products() {
           ) : (
             <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-gray-200">
               <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-foreground">No products found</h3>
-              <p className="text-muted-foreground mt-2">Try adjusting your search or filters</p>
+              <h3 className="text-xl font-bold text-foreground">{t('products.notfound.title')}</h3>
+              <p className="text-muted-foreground mt-2">{t('products.notfound.desc')}</p>
             </div>
           )}
 

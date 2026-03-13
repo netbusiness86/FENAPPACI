@@ -11,18 +11,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send, CheckCircle2 } from "lucide-react";
 
 const formSchema = z.object({
-  fullName: z.string().min(2, "Name is required"),
+  fullName: z.string().min(2),
   companyName: z.string().optional(),
-  country: z.string().min(2, "Country is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(5, "Phone number is required"),
-  product: z.string().min(1, "Product is required"),
-  quantity: z.string().min(1, "Quantity is required"),
-  deliveryDestination: z.string().min(2, "Destination is required"),
+  country: z.string().min(2),
+  email: z.string().email(),
+  phone: z.string().min(5),
+  product: z.string().min(1),
+  quantity: z.string().min(1),
+  deliveryDestination: z.string().min(2),
   message: z.string().optional(),
 });
 
@@ -50,7 +49,6 @@ export default function Request() {
   });
 
   useEffect(() => {
-    // Read product from URL if present
     const params = new URLSearchParams(window.location.search);
     const productParam = params.get("product");
     if (productParam) {
@@ -65,7 +63,7 @@ export default function Request() {
         onSuccess: () => {
           toast({
             title: t('general.success'),
-            description: "Your purchase request has been submitted successfully. We will contact you soon.",
+            description: t('request.toast.success'),
             variant: "default",
           });
           form.reset();
@@ -73,7 +71,7 @@ export default function Request() {
         onError: () => {
           toast({
             title: t('general.error'),
-            description: "Failed to submit request. Please try again.",
+            description: t('request.toast.error'),
             variant: "destructive",
           });
         }
@@ -83,36 +81,35 @@ export default function Request() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* hero shipping cargo logistics */}
-      <PageHero 
-        title="Request Purchase"
-        subtitle="Submit your requirements to receive a customized quote and export details."
+      <PageHero
+        title={t('request.hero.title')}
+        subtitle={t('request.hero.subtitle')}
         backgroundImage="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a71?w=1920&h=1080&fit=crop"
       />
 
       <section className="py-20 -mt-20 relative z-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
-            
+
             {createMutation.isSuccess ? (
               <div className="text-center py-16">
                 <CheckCircle2 className="w-20 h-20 text-green-500 mx-auto mb-6" />
-                <h3 className="text-3xl font-display font-bold mb-4">Request Sent Successfully!</h3>
+                <h3 className="text-3xl font-display font-bold mb-4">{t('request.success.title')}</h3>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Thank you for your interest. Our export team will review your request and contact you within 24 hours.
+                  {t('request.success.desc')}
                 </p>
                 <Button onClick={() => createMutation.reset()} variant="outline">
-                  Submit Another Request
+                  {t('request.success.btn')}
                 </Button>
               </div>
             ) : (
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="fullName">{t('form.fullname')} *</Label>
                     <Input id="fullName" {...form.register("fullName")} className="h-12 bg-gray-50" />
-                    {form.formState.errors.fullName && <p className="text-red-500 text-sm">{form.formState.errors.fullName.message}</p>}
+                    {form.formState.errors.fullName && <p className="text-red-500 text-sm">{t('validation.name')}</p>}
                   </div>
 
                   <div className="space-y-2">
@@ -123,53 +120,53 @@ export default function Request() {
                   <div className="space-y-2">
                     <Label htmlFor="email">{t('form.email')} *</Label>
                     <Input id="email" type="email" {...form.register("email")} className="h-12 bg-gray-50" />
-                    {form.formState.errors.email && <p className="text-red-500 text-sm">{form.formState.errors.email.message}</p>}
+                    {form.formState.errors.email && <p className="text-red-500 text-sm">{t('validation.email')}</p>}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="phone">{t('form.phone')} *</Label>
                     <Input id="phone" {...form.register("phone")} className="h-12 bg-gray-50" />
-                    {form.formState.errors.phone && <p className="text-red-500 text-sm">{form.formState.errors.phone.message}</p>}
+                    {form.formState.errors.phone && <p className="text-red-500 text-sm">{t('validation.phone')}</p>}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="country">{t('form.country')} *</Label>
                     <Input id="country" {...form.register("country")} className="h-12 bg-gray-50" />
-                    {form.formState.errors.country && <p className="text-red-500 text-sm">{form.formState.errors.country.message}</p>}
+                    {form.formState.errors.country && <p className="text-red-500 text-sm">{t('validation.country')}</p>}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="product">{t('form.product')} *</Label>
-                    <Input id="product" {...form.register("product")} className="h-12 bg-gray-50" placeholder="e.g. Cacao Beans" />
-                    {form.formState.errors.product && <p className="text-red-500 text-sm">{form.formState.errors.product.message}</p>}
+                    <Input id="product" {...form.register("product")} className="h-12 bg-gray-50" placeholder={t('request.placeholder.product')} />
+                    {form.formState.errors.product && <p className="text-red-500 text-sm">{t('validation.product')}</p>}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="quantity">{t('form.quantity')} *</Label>
-                    <Input id="quantity" {...form.register("quantity")} className="h-12 bg-gray-50" placeholder="e.g. 20 Tons / 1 Container" />
-                    {form.formState.errors.quantity && <p className="text-red-500 text-sm">{form.formState.errors.quantity.message}</p>}
+                    <Input id="quantity" {...form.register("quantity")} className="h-12 bg-gray-50" placeholder={t('request.placeholder.quantity')} />
+                    {form.formState.errors.quantity && <p className="text-red-500 text-sm">{t('validation.quantity')}</p>}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="deliveryDestination">{t('form.destination')} *</Label>
-                    <Input id="deliveryDestination" {...form.register("deliveryDestination")} className="h-12 bg-gray-50" placeholder="Port / City" />
-                    {form.formState.errors.deliveryDestination && <p className="text-red-500 text-sm">{form.formState.errors.deliveryDestination.message}</p>}
+                    <Input id="deliveryDestination" {...form.register("deliveryDestination")} className="h-12 bg-gray-50" placeholder={t('request.placeholder.destination')} />
+                    {form.formState.errors.deliveryDestination && <p className="text-red-500 text-sm">{t('validation.destination')}</p>}
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="message">{t('form.message')}</Label>
-                  <Textarea 
-                    id="message" 
-                    {...form.register("message")} 
-                    className="min-h-[120px] bg-gray-50 resize-y" 
-                    placeholder="Tell us more about your specific requirements, packaging needs, or timeline..."
+                  <Textarea
+                    id="message"
+                    {...form.register("message")}
+                    className="min-h-[120px] bg-gray-50 resize-y"
+                    placeholder={t('request.placeholder.message')}
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  size="lg"
                   className="w-full bg-primary hover:bg-primary/90 text-white h-14 text-lg rounded-xl shadow-lg"
                   disabled={createMutation.isPending}
                 >
@@ -181,7 +178,7 @@ export default function Request() {
                   ) : (
                     <span className="flex items-center gap-2">
                       <Send className="w-5 h-5" />
-                      {t('general.submit')} Request
+                      {t('request.submit')}
                     </span>
                   )}
                 </Button>

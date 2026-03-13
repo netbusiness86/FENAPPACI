@@ -11,18 +11,17 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* landing page hero tropical agriculture fields cacao */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://pixabay.com/get/g8fb6356491179b897ac95128fabf3c1068e07ddfb2b9683b21b30070965bf3b0a58082ec0be17b677b741dc3afa252f6527b65544566a2d962b50ed67b17f874_1280.jpg" 
-            alt="Agriculture Fields" 
+          <img
+            src="https://pixabay.com/get/g8fb6356491179b897ac95128fabf3c1068e07ddfb2b9683b21b30070965bf3b0a58082ec0be17b677b741dc3afa252f6527b65544566a2d962b50ed67b17f874_1280.jpg"
+            alt="Agriculture Fields"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-transparent"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-left w-full">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -32,15 +31,15 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
               FENAPPACI
             </div>
-            
+
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight mb-6">
               {t('home.hero.title')}
             </h1>
-            
+
             <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl font-light">
               {t('home.hero.subtitle')}
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/products">
                 <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white text-lg h-14 px-8 rounded-full shadow-lg shadow-primary/30">
@@ -67,7 +66,7 @@ export default function Home() {
             { label: t('home.stats.experience'), value: '15+', icon: TrendingUp },
             { label: t('home.stats.products'), value: '50+', icon: CheckCircle2 },
           ].map((stat, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -90,28 +89,28 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Excellence in Agricultural Export
+              {t('home.features.title')}
             </h2>
             <p className="text-lg text-muted-foreground">
-              We connect local farmers with global markets, ensuring premium quality and sustainable practices at every step.
+              {t('home.features.subtitle')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Premium Quality",
-                desc: "Strict quality control processes ensuring only the best produce reaches international markets.",
+                title: t('home.features.quality.title'),
+                desc: t('home.features.quality.desc'),
                 img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&h=300&fit=crop"
               },
               {
-                title: "Global Network",
-                desc: "Extensive logistics and distribution network spanning across 30+ countries worldwide.",
+                title: t('home.features.network.title'),
+                desc: t('home.features.network.desc'),
                 img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=500&h=300&fit=crop"
               },
               {
-                title: "Sustainable Farming",
-                desc: "Supporting local farmers with modern techniques for environmentally friendly agriculture.",
+                title: t('home.features.sustainable.title'),
+                desc: t('home.features.sustainable.desc'),
                 img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&h=300&fit=crop"
               }
             ].map((feature, i) => (
@@ -133,16 +132,15 @@ export default function Home() {
       <section className="py-24 relative overflow-hidden bg-primary">
         <div className="absolute inset-0 bg-[url('https://pixabay.com/get/g57fb3ca7daef5d47e730c9cff3eb62dd12301941767ca7dca0691e7f6020cf0283c9dcb407b4b35f56dbd9c6801ca9c4f2a6bad5d018e0c6db9b501849467f2d_1280.png')] opacity-20 bg-cover bg-center mix-blend-overlay"></div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">Ready to Import Premium Products?</h2>
-          <p className="text-xl text-primary-foreground/90 mb-10">Join our network of international buyers and experience the finest agricultural produce from Ivory Coast.</p>
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">{t('home.cta.title')}</h2>
+          <p className="text-xl text-primary-foreground/90 mb-10">{t('home.cta.subtitle')}</p>
           <Link href="/request">
             <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white px-10 h-16 text-lg rounded-full shadow-2xl shadow-secondary/30">
-              Request a Quote Today
+              {t('home.cta.btn')}
             </Button>
           </Link>
         </div>
       </section>
-
     </div>
   );
 }
