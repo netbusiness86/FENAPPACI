@@ -1,8 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { Link } from 'wouter';
 import { ArrowRight, CheckCircle2, Globe, TrendingUp, Users, Star, ChevronRight, Sprout, ShieldCheck, Handshake } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+const Logo3D = lazy(() => import('@/components/Logo3D'));
 
 const TESTIMONIALS = [
   {
@@ -104,48 +106,78 @@ export default function Home() {
         ))}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/30 backdrop-blur-md border border-orange-300/40 text-orange-100 text-sm font-semibold mb-6 uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-              Côte d'Ivoire — Afrique de l'Ouest
-            </div>
+          <div className="flex flex-col lg:flex-row items-center gap-10">
 
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-4 drop-shadow-lg">
-              FENAPPACI
-            </h1>
+            {/* Left: text */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 max-w-3xl"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/30 backdrop-blur-md border border-orange-300/40 text-orange-100 text-sm font-semibold mb-6 uppercase tracking-widest">
+                <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+                Côte d'Ivoire — Afrique de l'Ouest
+              </div>
 
-            <p className="text-2xl md:text-3xl text-orange-100 font-semibold mb-4 leading-snug">
-              {t('home.hero.company_type')}
-            </p>
+              <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-4 drop-shadow-lg">
+                FENAPPACI
+              </h1>
 
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl font-light leading-relaxed">
-              {t('home.hero.subtitle')}
-            </p>
+              <p className="text-2xl md:text-3xl text-orange-100 font-semibold mb-4 leading-snug">
+                {t('home.hero.company_type')}
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
-              <Link href="/products">
-                <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white text-base h-14 px-8 rounded-full shadow-xl shadow-orange-900/40 font-semibold">
-                  {t('home.btn.products')}
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href="/request">
-                <Button size="lg" className="bg-white hover:bg-orange-50 text-orange-700 text-base h-14 px-8 rounded-full shadow-xl font-semibold border-0">
-                  {t('home.btn.request')}
-                </Button>
-              </Link>
-              <Link href="/partnership">
-                <Button size="lg" variant="outline" className="bg-transparent hover:bg-white/10 text-white border-white/40 text-base h-14 px-8 rounded-full backdrop-blur-md font-semibold">
-                  {t('home.btn.partner')}
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+              <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl font-light leading-relaxed">
+                {t('home.hero.subtitle')}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
+                <Link href="/products">
+                  <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white text-base h-14 px-8 rounded-full shadow-xl shadow-orange-900/40 font-semibold">
+                    {t('home.btn.products')}
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+                <Link href="/request">
+                  <Button size="lg" className="bg-white hover:bg-orange-50 text-orange-700 text-base h-14 px-8 rounded-full shadow-xl font-semibold border-0">
+                    {t('home.btn.request')}
+                  </Button>
+                </Link>
+                <Link href="/partnership">
+                  <Button size="lg" variant="outline" className="bg-transparent hover:bg-white/10 text-white border-white/40 text-base h-14 px-8 rounded-full backdrop-blur-md font-semibold">
+                    {t('home.btn.partner')}
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right: 3D logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="hidden lg:flex flex-col items-center gap-4 flex-shrink-0"
+            >
+              {/* Glow backdrop */}
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-orange-500/25 blur-3xl scale-150" />
+                <Suspense fallback={
+                  <div className="w-72 h-72 rounded-full bg-white/10 animate-pulse flex items-center justify-center">
+                    <img src="/images/fenappaci-logo-transparent.png" alt="FENAPPACI" className="w-52 h-52 object-contain opacity-40 logo-spin-slow" />
+                  </div>
+                }>
+                  <Logo3D size={290} />
+                </Suspense>
+              </div>
+              <div className="text-center">
+                <p className="text-orange-200 text-xs font-semibold uppercase tracking-widest opacity-70">
+                  Production · Export · Qualité
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
 
         {/* Bottom gradient fade */}

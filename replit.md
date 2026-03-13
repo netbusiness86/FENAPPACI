@@ -1,3 +1,38 @@
+# FENAPPACI Website — Premium Agricultural Export Platform
+
+## FENAPPACI Features
+
+### Visual & 3D
+- **Logo3D** (`artifacts/fenappaci/src/components/Logo3D.tsx`) — Three.js/WebGL 3D spinning coin logo with mouse-tilt interaction, hover scale, metallic orange rim, green inner ring, and city environment lighting. Graceful CSS 3D fallback if WebGL unavailable. Used on: hero (290px), contact page (220px)
+- **3D CSS logo animations** — `logo-spin`, `logo-spin-slow`, `logo-spin-card` use `perspective() rotateY` for true 3D coin-flip on navbar, footer, and product badges
+- **Agricultural particles** — 10 floating emoji particles (🌿🌾☕🍃🌰🌴🍫🌸🍌) in homepage hero, CSS `float-particle` animation
+
+### Export Page
+- **TransportScene** (`src/components/TransportScene.tsx`) — 3-layer animated export visualization:
+  - Sky layer: animated SVG arc routes with ✈ emoji planes flying along bezier paths
+  - Ocean layer: animated cargo ships (MV FENAPPACI I, MV CÔTE D'IVOIRE) with bobbing motion + wave layers
+  - Road layer: animated container trucks on road with dashed center line
+  - Route steps strip: 5-step pipeline from Farm → Processing → Packaging → Shipping → Destination
+- **ProductExportRoutes** (`src/components/ProductExportRoutes.tsx`) — Interactive product-to-destination route visualizer:
+  - 6 products: Cacao, Cajou, Café, Mangue, Huile de Palme, Hévéa
+  - Mini SVG world map with animated dots traveling CI → destination
+  - Destination detail cards with country flags and buyer markets
+
+### World Map
+- **WorldMapBuyers** (`src/components/WorldMapBuyers.tsx`) — Full react-simple-maps world map:
+  - 17 buyer countries with colored pulsing markers and flags
+  - Animated ✈ airplane markers traveling bezier arcs from Ivory Coast to each destination
+  - Click any marker or country card → expandable detail panel (products, volumes, partners, CTA)
+  - Hover tooltips with product tags and volume info
+  - Zoom controls (+/−/reset)
+  - Legend: origin, in-flight, export route
+
+### Technology Stack (fenappaci)
+- **Three.js**: `three`, `@react-three/fiber`, `@react-three/drei` — for Logo3D
+- **Maps**: `react-simple-maps`, `topojson-client` — for world buyer map
+- **Animations**: `framer-motion`, CSS `@keyframes` — for all motion
+- **React**: lazy-loaded heavy components (Logo3D) for performance
+
 # Workspace
 
 ## Overview

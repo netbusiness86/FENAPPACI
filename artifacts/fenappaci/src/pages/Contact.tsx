@@ -1,11 +1,12 @@
+import { lazy, Suspense, useState } from "react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Facebook } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+const Logo3D = lazy(() => import('@/components/Logo3D'));
 
 export default function Contact() {
   const { toast } = useToast();
@@ -37,26 +38,17 @@ export default function Contact() {
       <section className="py-20 bg-gradient-to-br from-green-700 via-green-800 to-green-900 text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
 
-          {/* Large rotating logo with glow rings */}
+          {/* 3D Logo */}
           <div className="flex justify-center mb-10">
             <div className="relative">
-              {/* Outer glow ring */}
-              <div className="absolute inset-0 rounded-full bg-orange-400/20 blur-2xl scale-150 animate-pulse" />
-              {/* Middle ring */}
-              <div className="absolute inset-0 m-[-8px] rounded-full border-2 border-orange-400/30 logo-spin-slow" />
-              {/* Inner ring */}
-              <div className="absolute inset-0 m-[-4px] rounded-full border border-green-400/40" />
-              {/* Logo */}
-              <div
-                className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-black/30 bg-white"
-                style={{ width: 180, height: 180 }}
-              >
-                <img
-                  src="/images/fenappaci-logo-transparent.png"
-                  alt="FENAPPACI"
-                  className="w-full h-full object-cover logo-spin"
-                />
-              </div>
+              <div className="absolute inset-0 rounded-full bg-orange-400/20 blur-3xl scale-150 animate-pulse" />
+              <Suspense fallback={
+                <div className="w-52 h-52 rounded-full bg-white/10 animate-pulse flex items-center justify-center">
+                  <img src="/images/fenappaci-logo-transparent.png" alt="FENAPPACI" className="w-40 h-40 object-contain opacity-50 logo-spin" />
+                </div>
+              }>
+                <Logo3D size={220} interactive={false} />
+              </Suspense>
             </div>
           </div>
 

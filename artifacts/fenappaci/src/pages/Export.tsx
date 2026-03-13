@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import WorldMapBuyers from "@/components/WorldMapBuyers";
+import TransportScene from "@/components/TransportScene";
+import ProductExportRoutes from "@/components/ProductExportRoutes";
 
 export default function Export() {
   const { lang, t } = useLanguage();
@@ -211,6 +213,9 @@ export default function Export() {
         </div>
       </section>
 
+      {/* ── Live Transport Animations ── */}
+      <TransportScene />
+
       {/* ── Interactive World Map of Buyers ── */}
       <section className="py-24 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -228,6 +233,9 @@ export default function Export() {
           <WorldMapBuyers />
         </div>
       </section>
+
+      {/* ── Product Export Routes ── */}
+      <ProductExportRoutes />
 
       {/* ── Export CTA ── */}
       <section className="py-20 bg-gradient-to-br from-orange-500 to-orange-700 text-white text-center">
