@@ -1,0 +1,16 @@
+packages:
+  "framer-motion": "For smooth page transitions and scroll-triggered animations"
+  "react-hook-form": "For robust form state management in the request and contact pages"
+  "@hookform/resolvers": "For Zod validation integration with react-hook-form"
+
+images:
+  - path: "artifacts/fenappaci/public/images/logo.png"
+    description: "A professional minimal logo for an agricultural export company named FENAPPACI, featuring a stylized green leaf and orange accents, transparent background"
+    aspect_ratio: "1:1"
+  - path: "artifacts/fenappaci/public/images/pattern-bg.png"
+    description: "Subtle abstract geometric pattern in very light green and orange for section backgrounds"
+    aspect_ratio: "16:9"
+
+notes:
+  - Using generated API hooks from @workspace/api-client-react
+  - Simulating admin authentication with local state (password: fenappaci2024)
