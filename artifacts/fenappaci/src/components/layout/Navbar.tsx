@@ -39,12 +39,11 @@ export function Navbar() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-emerald-500 flex items-center justify-center text-white shadow-lg group-hover:shadow-primary/30 transition-all">
-              <span className="font-display font-bold text-xl">F</span>
-            </div>
-            <span className={`font-display font-bold text-2xl tracking-tight transition-colors ${isScrolled ? 'text-foreground' : 'text-white drop-shadow-md'}`}>
-              FENAPPACI
-            </span>
+            <img
+              src="/images/fenappaci-logo.png"
+              alt="FENAPPACI Logo"
+              className="h-14 w-auto drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
 
           {/* Desktop Nav */}
