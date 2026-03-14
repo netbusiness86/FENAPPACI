@@ -8,18 +8,31 @@ const router: IRouter = Router();
 
 /* ── Language detection by country ── */
 const FRENCH_COUNTRIES = new Set([
-  "france", "belgique", "belgium", "suisse", "switzerland", "luxembourg",
-  "monaco", "canada", "québec", "quebec",
+  // France & Europe francophone
+  "france", "belgique", "belgium", "suisse", "switzerland",
+  "luxembourg", "monaco",
+  // Amérique
+  "canada", "québec", "quebec", "haïti", "haiti",
+  // Afrique de l'Ouest
   "côte d'ivoire", "cote d'ivoire", "ivory coast",
-  "sénégal", "senegal", "mali", "burkina faso", "guinée", "guinea",
-  "niger", "togo", "bénin", "benin", "cameroun", "cameroon",
-  "congo", "république du congo", "republic of congo",
-  "république démocratique du congo", "democratic republic of congo", "rdc", "drc",
-  "madagascar", "rwanda", "burundi", "djibouti", "comores", "comoros",
-  "seychelles", "maurice", "mauritius", "gabon", "centrafrique",
-  "central african republic", "tchad", "chad", "maroc", "morocco",
-  "algérie", "algeria", "tunisie", "tunisia", "mauritanie", "mauritania",
-  "haiti", "haïti", "vanuatu", "polynésie française", "nouvelle-calédonie",
+  "sénégal", "senegal", "mali", "burkina faso",
+  "guinée", "guinea", "guinée-bissau", "guinea-bissau",
+  "guinée équatoriale", "equatorial guinea",
+  "niger", "togo", "bénin", "benin",
+  // Afrique Centrale
+  "cameroun", "cameroon",
+  "congo", "congo (rdc)", "republic of congo", "dr congo",
+  "gabon", "centrafrique", "central african republic",
+  "tchad", "chad",
+  // Afrique de l'Est & Océan Indien
+  "madagascar", "rwanda", "burundi", "djibouti",
+  "comores", "comoros", "seychelles",
+  "maurice", "mauritius",
+  // Afrique du Nord
+  "maroc", "morocco", "algérie", "algeria",
+  "tunisie", "tunisia", "mauritanie", "mauritania",
+  // Pacifique / DOM-TOM (noms tels qu'affichés)
+  "vanuatu", "polynésie française", "nouvelle-calédonie",
   "réunion", "martinique", "guadeloupe", "guyane", "mayotte",
 ]);
 

@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
 import { products } from "@/data/products";
+import { CountrySelect } from "@/components/ui/CountrySelect";
 
 const formSchema = z.object({
   fullName: z.string().min(2),
@@ -133,9 +134,24 @@ export default function Request() {
 
                   {/* Country */}
                   <div className="space-y-2">
-                    <Label htmlFor="country">{t('form.country')} *</Label>
-                    <Input id="country" {...form.register("country")} className="h-12 bg-gray-50" />
-                    {form.formState.errors.country && <p className="text-red-500 text-sm">{t('validation.country')}</p>}
+                    <Label>{t('form.country')} *</Label>
+                    <Controller
+                      name="country"
+                      control={form.control}
+                      render={({ field }) => (
+                        <CountrySelect
+                          value={field.value}
+                          onChange={field.onChange}
+                          lang={lang}
+                          error={!!form.formState.errors.country}
+                        />
+                      )}
+                    />
+                    {form.formState.errors.country && (
+                      <p className="text-red-500 text-sm">
+                        {lang === 'fr' ? 'Veuillez sélectionner votre pays' : 'Please select your country'}
+                      </p>
+                    )}
                   </div>
 
                   {/* ── Product dropdown ── */}
