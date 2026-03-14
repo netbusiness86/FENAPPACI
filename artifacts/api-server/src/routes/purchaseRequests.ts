@@ -19,8 +19,10 @@ function createTransporter() {
     host,
     port,
     secure: port === 465,
-    auth: { user, pass },
+    auth: { type: 'LOGIN', user, pass },
     tls: { rejectUnauthorized: false },
+    debug: true,
+    logger: true,
   });
 }
 
