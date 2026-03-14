@@ -6,6 +6,27 @@ import { eq, desc, count } from "drizzle-orm";
 
 const router: IRouter = Router();
 
+/* ── Language detection by country ── */
+const FRENCH_COUNTRIES = new Set([
+  "france", "belgique", "belgium", "suisse", "switzerland", "luxembourg",
+  "monaco", "canada", "québec", "quebec",
+  "côte d'ivoire", "cote d'ivoire", "ivory coast",
+  "sénégal", "senegal", "mali", "burkina faso", "guinée", "guinea",
+  "niger", "togo", "bénin", "benin", "cameroun", "cameroon",
+  "congo", "république du congo", "republic of congo",
+  "république démocratique du congo", "democratic republic of congo", "rdc", "drc",
+  "madagascar", "rwanda", "burundi", "djibouti", "comores", "comoros",
+  "seychelles", "maurice", "mauritius", "gabon", "centrafrique",
+  "central african republic", "tchad", "chad", "maroc", "morocco",
+  "algérie", "algeria", "tunisie", "tunisia", "mauritanie", "mauritania",
+  "haiti", "haïti", "vanuatu", "polynésie française", "nouvelle-calédonie",
+  "réunion", "martinique", "guadeloupe", "guyane", "mayotte",
+]);
+
+function detectLanguage(country: string): "fr" | "en" {
+  return FRENCH_COUNTRIES.has(country.toLowerCase().trim()) ? "fr" : "en";
+}
+
 /* ── Nodemailer transporter ── */
 function createTransporter() {
   const host = process.env.SMTP_HOST;
@@ -24,22 +45,40 @@ function createTransporter() {
   });
 }
 
-/* ── Email: notification to FENAPPACI ── */
+/* ── Email: notification to FENAPPACI (always French internally) ── */
 function buildAdminEmail(r: {
   fullName: string; companyName?: string | null; email: string;
   phone: string; country: string; product: string; quantity: string;
   deliveryDestination: string; message?: string | null; id: number;
-}) {
+}, lang: "fr" | "en") {
+  const labels = lang === "fr"
+    ? {
+        title: "Nouvelle Demande",
+        subtitle: `Commande #${r.id} reçue via fenappaci.com`,
+        fullName: "Nom complet", company: "Société", email: "Email",
+        phone: "Téléphone", country: "Pays", product: "Produit souhaité",
+        quantity: "Quantité", destination: "Destination de livraison", message: "Message",
+        cta: "⚡ Répondez rapidement pour maximiser les chances de conclure cette vente.",
+      }
+    : {
+        title: "New Purchase Request",
+        subtitle: `Order #${r.id} received via fenappaci.com`,
+        fullName: "Full name", company: "Company", email: "Email",
+        phone: "Phone", country: "Country", product: "Requested product",
+        quantity: "Quantity", destination: "Delivery destination", message: "Message",
+        cta: "⚡ Reply quickly to maximise the chances of closing this deal.",
+      };
+
   const rows = [
-    ["Nom complet", r.fullName],
-    ["Société", r.companyName || "—"],
-    ["Email", r.email],
-    ["Téléphone", r.phone],
-    ["Pays", r.country],
-    ["Produit souhaité", r.product],
-    ["Quantité", r.quantity],
-    ["Destination de livraison", r.deliveryDestination],
-    ["Message", r.message || "—"],
+    [labels.fullName, r.fullName],
+    [labels.company, r.companyName || "—"],
+    [labels.email, r.email],
+    [labels.phone, r.phone],
+    [labels.country, r.country],
+    [labels.product, r.product],
+    [labels.quantity, r.quantity],
+    [labels.destination, r.deliveryDestination],
+    [labels.message, r.message || "—"],
   ];
 
   const tableRows = rows.map(([label, value]) => `
@@ -48,61 +87,80 @@ function buildAdminEmail(r: {
       <td style="padding:8px 12px;color:#1f2937;border:1px solid #e5e7eb;">${value}</td>
     </tr>`).join("");
 
+  const subject = lang === "fr"
+    ? `🌿 Nouvelle commande #${r.id} — ${r.product} — ${r.fullName}`
+    : `🌿 New order #${r.id} — ${r.product} — ${r.fullName}`;
+
   return {
     from: `"FENAPPACI Site Web" <${process.env.SMTP_USER}>`,
     to: "info@fenappaci.com",
-    subject: `🌿 Nouvelle commande #${r.id} — ${r.product} — ${r.fullName}`,
+    subject,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
         <div style="background:linear-gradient(135deg,#f97316 0%,#16a34a 100%);padding:32px 28px;">
-          <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;">🌿 FENAPPACI — Nouvelle Demande</h1>
-          <p style="margin:6px 0 0;color:rgba(255,255,255,.85);font-size:14px;">Commande #${r.id} reçue via fenappaci.com</p>
+          <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;">🌿 FENAPPACI — ${labels.title}</h1>
+          <p style="margin:6px 0 0;color:rgba(255,255,255,.85);font-size:14px;">${labels.subtitle}</p>
         </div>
         <div style="padding:28px;">
           <table style="width:100%;border-collapse:collapse;font-size:14px;">${tableRows}</table>
           <div style="margin-top:20px;padding:14px 16px;background:#fef3c7;border-left:4px solid #f97316;border-radius:4px;">
-            <p style="margin:0;color:#92400e;font-size:13px;font-weight:600;">⚡ Répondez rapidement pour maximiser les chances de conclure cette vente.</p>
+            <p style="margin:0;color:#92400e;font-size:13px;font-weight:600;">${labels.cta}</p>
           </div>
         </div>
         <div style="padding:16px 28px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-          <p style="margin:0;font-size:12px;color:#9ca3af;">FENAPPACI — Fédération Nationale des Producteurs & Promoteurs Agricoles de Côte d'Ivoire</p>
+          <p style="margin:0;font-size:12px;color:#9ca3af;">FENAPPACI — Fédération Nationale des Producteurs &amp; Promoteurs Agricoles de Côte d'Ivoire</p>
         </div>
       </div>`,
   };
 }
 
-/* ── Email: auto-reply to client ── */
+/* ── Email: auto-reply to client (language-aware) ── */
 function buildClientEmail(r: {
   fullName: string; email: string; product: string;
   quantity: string; deliveryDestination: string; id: number;
-}) {
+}, lang: "fr" | "en") {
+  const t = lang === "fr"
+    ? {
+        subject: `✅ Votre demande a bien été reçue — FENAPPACI`,
+        heading: "Demande bien reçue !",
+        greeting: `Cher(e) <strong>${r.fullName}</strong>,`,
+        body: `Nous avons bien reçu votre demande concernant <strong style="color:#16a34a;">${r.product}</strong> (${r.quantity}) pour livraison à <strong>${r.deliveryDestination}</strong>.`,
+        refLabel: "📋 Référence de votre commande",
+        followUp: `Notre équipe commerciale examinera votre demande et vous contactera dans les <strong>meilleurs délais</strong> (généralement sous 24–48h ouvrables).`,
+        contactTitle: "📞 Contact direct FENAPPACI",
+      }
+    : {
+        subject: `✅ Your request has been received — FENAPPACI`,
+        heading: "Request received!",
+        greeting: `Dear <strong>${r.fullName}</strong>,`,
+        body: `We have received your request for <strong style="color:#16a34a;">${r.product}</strong> (${r.quantity}) for delivery to <strong>${r.deliveryDestination}</strong>.`,
+        refLabel: "📋 Your order reference",
+        followUp: `Our sales team will review your request and contact you as soon as possible (usually within 24–48 business hours).`,
+        contactTitle: "📞 FENAPPACI direct contact",
+      };
+
   return {
     from: `"FENAPPACI" <${process.env.SMTP_USER}>`,
     to: r.email,
-    subject: `✅ Votre demande a bien été reçue — FENAPPACI`,
+    subject: t.subject,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
         <div style="background:linear-gradient(135deg,#f97316 0%,#16a34a 100%);padding:32px 28px;text-align:center;">
           <div style="width:64px;height:64px;background:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;">
             <span style="font-size:32px;">🌿</span>
           </div>
-          <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;">Demande bien reçue !</h1>
+          <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;">${t.heading}</h1>
         </div>
         <div style="padding:32px 28px;">
-          <p style="margin:0 0 16px;font-size:16px;color:#1f2937;">Cher(e) <strong>${r.fullName}</strong>,</p>
-          <p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.6;">
-            Nous avons bien reçu votre demande concernant <strong style="color:#16a34a;">${r.product}</strong> 
-            (${r.quantity}) pour livraison à <strong>${r.deliveryDestination}</strong>.
-          </p>
+          <p style="margin:0 0 16px;font-size:16px;color:#1f2937;">${t.greeting}</p>
+          <p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.6;">${t.body}</p>
           <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
-            <p style="margin:0 0 6px;font-size:14px;font-weight:700;color:#15803d;">📋 Référence de votre commande</p>
+            <p style="margin:0 0 6px;font-size:14px;font-weight:700;color:#15803d;">${t.refLabel}</p>
             <p style="margin:0;font-size:24px;font-weight:800;color:#16a34a;letter-spacing:2px;">#${r.id}</p>
           </div>
-          <p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.6;">
-            Notre équipe commerciale examinera votre demande et vous contactera dans les <strong>meilleurs délais</strong> (généralement sous 24–48h ouvrables).
-          </p>
+          <p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.6;">${t.followUp}</p>
           <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:16px 20px;">
-            <p style="margin:0 0 8px;font-size:14px;font-weight:700;color:#9a3412;">📞 Contact direct FENAPPACI</p>
+            <p style="margin:0 0 8px;font-size:14px;font-weight:700;color:#9a3412;">${t.contactTitle}</p>
             <p style="margin:0;font-size:14px;color:#7c2d12;">
               📧 info@fenappaci.com<br>
               📱 +225 07 49 01 27 25<br>
@@ -113,7 +171,7 @@ function buildClientEmail(r: {
         </div>
         <div style="padding:20px 28px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
           <p style="margin:0 0 4px;font-size:13px;font-weight:600;color:#374151;">FENAPPACI</p>
-          <p style="margin:0;font-size:12px;color:#9ca3af;">Fédération Nationale des Producteurs & Promoteurs Agricoles de Côte d'Ivoire</p>
+          <p style="margin:0;font-size:12px;color:#9ca3af;">Fédération Nationale des Producteurs &amp; Promoteurs Agricoles de Côte d'Ivoire</p>
           <p style="margin:4px 0 0;font-size:12px;color:#9ca3af;">Abidjan Cocody Angré Château — Immeuble BATIM 2ème Étage Porte 216</p>
         </div>
       </div>`,
@@ -140,12 +198,14 @@ router.post("/purchase-requests", async (req, res) => {
   /* ── Send emails asynchronously (don't block the response) ── */
   const transporter = createTransporter();
   if (transporter) {
+    const lang = detectLanguage(request.country);
+    console.log(`[email] Detected language "${lang}" for country "${request.country}"`);
     try {
       await Promise.all([
-        transporter.sendMail(buildAdminEmail(request)),
-        transporter.sendMail(buildClientEmail(request)),
+        transporter.sendMail(buildAdminEmail(request, lang)),
+        transporter.sendMail(buildClientEmail(request, lang)),
       ]);
-      console.log(`[email] Sent order #${request.id} notifications`);
+      console.log(`[email] Sent order #${request.id} notifications (${lang})`);
     } catch (err) {
       console.error("[email] Failed to send:", err);
     }
@@ -179,7 +239,7 @@ router.get("/admin/purchase-requests", async (req, res) => {
 /* ── GET /admin/purchase-requests/:id ── */
 router.get("/admin/purchase-requests/:id", async (req, res) => {
   const parsed = GetPurchaseRequestParams.safeParse({ id: Number(req.params.id) });
-  if (!parsed.success) { res.status(400).json({ error: "invalid_id", message: "Invalid ID" }); return; }
+  if (!parsed.success) { res.status(404).json({ error: "not_found", message: "Purchase request not found" }); return; }
 
   const [request] = await db.select().from(purchaseRequestsTable).where(eq(purchaseRequestsTable.id, parsed.data.id));
   if (!request) { res.status(404).json({ error: "not_found", message: "Purchase request not found" }); return; }
