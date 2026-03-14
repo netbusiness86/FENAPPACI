@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -38,6 +39,8 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 function Router() {
   return (
+    <>
+    <ScrollToTop />
     <Switch>
       <Route path="/admin" component={Admin} />
       <Route path="/">
@@ -74,6 +77,7 @@ function Router() {
         <Layout><NotFound /></Layout>
       </Route>
     </Switch>
+    </>
   );
 }
 
