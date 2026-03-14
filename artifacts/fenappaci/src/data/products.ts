@@ -1,3 +1,23 @@
+import huilePalme from '@assets/huile-de-palme_1773494708885.jpeg';
+import sojaVert from '@assets/2513237_uploaded_image1_1596578638_1773494722841.jpg';
+import sojaBlancImg from '@assets/554204_1773494740722.jpg';
+import rocouImg from '@assets/main.jpg_large_1773494740819.jpg';
+import gengembreImg from '@assets/shutterstock-2259537229-min-scaled-1_1773494740889.jpg';
+import laitueImg from '@assets/laitue_frise_vert_1773494740944.jpg';
+import aubergineImg from '@assets/12086942_1773494741009.jpg';
+import pimentImg from '@assets/Les-bienfaits-du-piment-sur-la-sante_1773494759594.jpg';
+import pommeDeTermeImg from '@assets/white-e1563480325829_1773494778661.jpg';
+import igname from '@assets/igname-yam-tevi-igname-blanc-koliko_1773494778731.jpeg';
+import maisImg from '@assets/grains_1773494778818.jpg';
+import placaliImg from '@assets/701200_1773494778871.jpg';
+import pastequeImg from '@assets/composition-fruits-isolee_23-2151856344_1773494778919.jpg';
+import melonImg from '@assets/7c9d5e80-786a-11f0-8071-1788c7e8ae0e.jpg_1773494802946.webp';
+import avocatImg from '@assets/avocados-1081695_19201-800x533_1773494803038.jpg';
+import mangueImg from '@assets/Sans-titre-75_1773494803091.jpg';
+import plantainImg from '@assets/istockphoto-1126717193-170667a_1773494803135.jpg';
+import kolaImg from '@assets/AdobeStock_18586675_1773494803179.jpeg';
+import cotonImg from '@assets/coton-environnement_1773494803227.jpg';
+
 export type Category = 'export' | 'fruits' | 'food' | 'vegetables';
 
 export interface Product {
@@ -8,10 +28,8 @@ export interface Product {
   description: { fr: string; en: string };
 }
 
-// Helper: Unsplash CDN (tested working IDs)
 const u = (id: string) => `https://images.unsplash.com/${id}?w=600&h=400&fit=crop&auto=format`;
-// Helper: Loremflickr keyword images (always show relevant content)
-const lf = (keywords: string, seed: number) => `https://loremflickr.com/600/400/${keywords}?lock=${seed}`;
+const lf = (kw: string, seed: number) => `https://loremflickr.com/600/400/${kw}?lock=${seed}`;
 
 export const products: Product[] = [
   // === CULTURES D'EXPORTATION ===
@@ -19,7 +37,7 @@ export const products: Product[] = [
     id: 'cacao',
     name: { fr: 'Cacao / Fèves de Cacao', en: 'Cacao / Cocoa Beans' },
     category: 'export',
-    image: lf('cocoa,beans', 1),
+    image: lf('cocoa,beans,chocolate', 1),
     description: {
       fr: 'Fèves de cacao de première qualité, séchées au soleil, idéales pour la production de chocolat fin.',
       en: 'Premium quality sun-dried cocoa beans, ideal for fine chocolate production.'
@@ -39,7 +57,7 @@ export const products: Product[] = [
     id: 'cashew',
     name: { fr: 'Noix de Cajou', en: 'Cashew Nuts' },
     category: 'export',
-    image: lf('cashew,nuts', 2),
+    image: lf('cashew,nuts,africa', 2),
     description: {
       fr: 'Noix de cajou brutes et transformées de haute qualité, issues des meilleures plantations.',
       en: 'High quality raw and processed cashew nuts from the best plantations.'
@@ -49,7 +67,7 @@ export const products: Product[] = [
     id: 'palm-oil',
     name: { fr: 'Huile de Palme', en: 'Palm Oil' },
     category: 'export',
-    image: lf('palm,oil,fruit', 3),
+    image: huilePalme,
     description: {
       fr: 'Huile de palme brute et raffinée issue de plantations durables certifiées.',
       en: 'Crude and refined palm oil from certified sustainable plantations.'
@@ -59,7 +77,7 @@ export const products: Product[] = [
     id: 'rubber',
     name: { fr: 'Hévéa / Caoutchouc', en: 'Rubber' },
     category: 'export',
-    image: lf('rubber,tree,latex', 4),
+    image: lf('rubber,latex,tree', 4),
     description: {
       fr: 'Caoutchouc naturel brut de haute qualité pour applications industrielles mondiales.',
       en: 'High quality raw natural rubber for global industrial applications.'
@@ -69,7 +87,7 @@ export const products: Product[] = [
     id: 'cotton',
     name: { fr: 'Coton', en: 'Cotton' },
     category: 'export',
-    image: lf('cotton,plant', 5),
+    image: cotonImg,
     description: {
       fr: 'Fibres de coton pur de haute qualité pour l\'industrie textile internationale.',
       en: 'High-quality pure cotton fibers for the international textile industry.'
@@ -79,7 +97,7 @@ export const products: Product[] = [
     id: 'cola',
     name: { fr: 'Noix de Cola', en: 'Cola Nut' },
     category: 'export',
-    image: lf('kola,nut', 6),
+    image: kolaImg,
     description: {
       fr: 'Noix de cola fraîches et séchées, utilisées en pharmacopée traditionnelle et boissons.',
       en: 'Fresh and dried cola nuts used in traditional pharmacopoeia and beverages.'
@@ -91,7 +109,7 @@ export const products: Product[] = [
     id: 'plantain',
     name: { fr: 'Banane Plantain', en: 'Plantain' },
     category: 'fruits',
-    image: lf('plantain,banana', 7),
+    image: plantainImg,
     description: {
       fr: 'Bananes plantains fraîches, vertes ou mûres, cultivées en Côte d\'Ivoire.',
       en: 'Fresh plantain bananas, green or ripe, grown in Ivory Coast.'
@@ -111,7 +129,7 @@ export const products: Product[] = [
     id: 'papaya',
     name: { fr: 'Papaye', en: 'Papaya' },
     category: 'fruits',
-    image: lf('papaya,tropical', 8),
+    image: u('photo-1526318472351-c75fcf070305'),
     description: {
       fr: 'Papayes tropicales fraîches, riches en vitamines A et C.',
       en: 'Fresh tropical papayas, rich in vitamins A and C.'
@@ -121,7 +139,7 @@ export const products: Product[] = [
     id: 'mango',
     name: { fr: 'Mangue', en: 'Mango' },
     category: 'fruits',
-    image: lf('mango,fruit', 9),
+    image: mangueImg,
     description: {
       fr: 'Mangues Kent et Amélie, douces, juteuses et parfumées.',
       en: 'Sweet, juicy and fragrant Kent and Amelie mangoes.'
@@ -131,7 +149,7 @@ export const products: Product[] = [
     id: 'avocado',
     name: { fr: 'Avocat', en: 'Avocado' },
     category: 'fruits',
-    image: u('photo-1523049673857-eb18f1d7b578'),
+    image: avocatImg,
     description: {
       fr: 'Avocats crémeux de qualité supérieure, riches en bonnes graisses.',
       en: 'Premium quality creamy avocados, rich in healthy fats.'
@@ -161,7 +179,7 @@ export const products: Product[] = [
     id: 'lemon',
     name: { fr: 'Citron', en: 'Lemon' },
     category: 'fruits',
-    image: lf('lemon,citrus', 10),
+    image: lf('lemon,citrus,fresh', 10),
     description: {
       fr: 'Citrons frais et acidulés, parfaits pour la cuisine et les boissons.',
       en: 'Fresh and tangy lemons, perfect for cooking and beverages.'
@@ -171,7 +189,7 @@ export const products: Product[] = [
     id: 'melon',
     name: { fr: 'Melon', en: 'Melon' },
     category: 'fruits',
-    image: lf('melon,cantaloupe', 11),
+    image: melonImg,
     description: {
       fr: 'Melons sucrés et parfumés, cultivés sous le soleil d\'Afrique.',
       en: 'Sweet and fragrant melons grown under the African sun.'
@@ -181,7 +199,7 @@ export const products: Product[] = [
     id: 'watermelon',
     name: { fr: 'Pastèque', en: 'Watermelon' },
     category: 'fruits',
-    image: u('photo-1502741224143-90386d7f8c82'),
+    image: pastequeImg,
     description: {
       fr: 'Pastèques rafraîchissantes et sucrées, idéales pour les marchés d\'exportation.',
       en: 'Refreshing and sweet watermelons, ideal for export markets.'
@@ -203,7 +221,7 @@ export const products: Product[] = [
     id: 'cassava',
     name: { fr: 'Manioc', en: 'Cassava' },
     category: 'food',
-    image: lf('cassava,tapioca', 12),
+    image: u('photo-1518977676601-b53f82aba655'),
     description: {
       fr: 'Racines de manioc fraîches pour consommation directe ou transformation industrielle.',
       en: 'Fresh cassava roots for direct consumption or industrial processing.'
@@ -213,7 +231,7 @@ export const products: Product[] = [
     id: 'placali',
     name: { fr: 'Placali (Pâte de Manioc)', en: 'Placali (Cassava Paste)' },
     category: 'food',
-    image: lf('cassava,paste,food', 13),
+    image: placaliImg,
     description: {
       fr: 'Pâte de manioc fermentée, aliment traditionnel ivoirien très prisé.',
       en: 'Fermented cassava paste, a highly prized traditional Ivorian food.'
@@ -223,7 +241,7 @@ export const products: Product[] = [
     id: 'yellow-corn',
     name: { fr: 'Maïs Jaune', en: 'Yellow Corn' },
     category: 'food',
-    image: lf('corn,maize,yellow', 14),
+    image: maisImg,
     description: {
       fr: 'Maïs jaune séché, riche en amidon, pour l\'alimentation humaine et animale.',
       en: 'Dried yellow corn, starch-rich, for human and animal consumption.'
@@ -243,7 +261,7 @@ export const products: Product[] = [
     id: 'yam',
     name: { fr: 'Igname', en: 'Yam' },
     category: 'food',
-    image: lf('yam,tuber', 15),
+    image: igname,
     description: {
       fr: 'Tubercules d\'igname, base de l\'alimentation en Côte d\'Ivoire.',
       en: 'Yam tubers, a staple of the diet in Ivory Coast.'
@@ -263,7 +281,7 @@ export const products: Product[] = [
     id: 'potato',
     name: { fr: 'Pomme de Terre', en: 'Potato' },
     category: 'food',
-    image: lf('potato,vegetable', 16),
+    image: pommeDeTermeImg,
     description: {
       fr: 'Pommes de terre fraîches de qualité, cultivées en altitude.',
       en: 'Quality fresh potatoes grown at altitude.'
@@ -275,7 +293,7 @@ export const products: Product[] = [
     id: 'chili',
     name: { fr: 'Piment', en: 'Chili Pepper' },
     category: 'vegetables',
-    image: lf('chili,pepper,red', 17),
+    image: pimentImg,
     description: {
       fr: 'Piments rouges et verts forts et savoureux, frais ou séchés.',
       en: 'Spicy and flavorful red and green chili peppers, fresh or dried.'
@@ -285,7 +303,7 @@ export const products: Product[] = [
     id: 'eggplant',
     name: { fr: 'Aubergine', en: 'Eggplant' },
     category: 'vegetables',
-    image: u('photo-1606756790138-261d2b21cd75'),
+    image: aubergineImg,
     description: {
       fr: 'Aubergines fraîches et fermes, idéales pour la cuisine africaine et internationale.',
       en: 'Fresh and firm eggplants, ideal for African and international cuisine.'
@@ -295,7 +313,7 @@ export const products: Product[] = [
     id: 'okra',
     name: { fr: 'Gombo', en: 'Okra' },
     category: 'vegetables',
-    image: lf('okra,vegetable', 18),
+    image: u('photo-1601379760883-1bb497c558c1'),
     description: {
       fr: 'Gombos frais et tendres, très utilisés dans les sauces traditionnelles ivoiriennes.',
       en: 'Fresh and tender okra, widely used in traditional Ivorian sauces.'
@@ -305,7 +323,7 @@ export const products: Product[] = [
     id: 'lettuce',
     name: { fr: 'Laitue', en: 'Lettuce' },
     category: 'vegetables',
-    image: lf('lettuce,green,salad', 19),
+    image: laitueImg,
     description: {
       fr: 'Laitues fraîches et croquantes, cultivées sans pesticides.',
       en: 'Fresh and crispy lettuces, grown without pesticides.'
@@ -315,7 +333,7 @@ export const products: Product[] = [
     id: 'ginger',
     name: { fr: 'Gingembre', en: 'Ginger' },
     category: 'vegetables',
-    image: lf('ginger,root,spice', 20),
+    image: gengembreImg,
     description: {
       fr: 'Racines de gingembre fraîches, aromatiques et piquantes.',
       en: 'Fresh, aromatic and spicy ginger roots.'
@@ -325,7 +343,7 @@ export const products: Product[] = [
     id: 'rocou',
     name: { fr: 'Rocou (Annatto)', en: 'Rocou (Annatto)' },
     category: 'vegetables',
-    image: lf('annatto,spice,seeds', 21),
+    image: rocouImg,
     description: {
       fr: 'Graines de rocou utilisées comme colorant naturel et épice dans la cuisine.',
       en: 'Rocou seeds used as a natural colorant and spice in cooking.'
@@ -335,7 +353,7 @@ export const products: Product[] = [
     id: 'soybean-white',
     name: { fr: 'Soja Blanc', en: 'White Soybean' },
     category: 'vegetables',
-    image: lf('soybean,legume', 22),
+    image: sojaBlancImg,
     description: {
       fr: 'Graines de soja blanc séchées, riches en protéines végétales de haute qualité.',
       en: 'Dried white soybeans, rich in high quality plant proteins.'
@@ -345,7 +363,7 @@ export const products: Product[] = [
     id: 'soybean-green',
     name: { fr: 'Soja Vert (Edamame)', en: 'Green Soybean (Edamame)' },
     category: 'vegetables',
-    image: u('photo-1590779033100-9f60a05a013d'),
+    image: sojaVert,
     description: {
       fr: 'Gousses de soja vert frais, riches en protéines et en vitamines.',
       en: 'Fresh green soybean pods, rich in proteins and vitamins.'
