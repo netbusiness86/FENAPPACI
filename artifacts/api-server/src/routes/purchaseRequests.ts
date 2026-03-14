@@ -45,6 +45,42 @@ function createTransporter() {
   });
 }
 
+/* ── Shared logo URL (absolute, works in email clients) ── */
+const LOGO_URL = "https://fenappaci.com/images/fenappaci-logo-transparent.png";
+
+/* ── Shared email header with orange / white logo / green bands ── */
+function emailHeader(title: string, subtitle: string) {
+  return `
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+      <!-- Orange top band -->
+      <tr>
+        <td style="background:#f97316;padding:18px 28px 0;text-align:center;">
+          <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.75);text-transform:uppercase;">Fédération Nationale des Producteurs &amp; Promoteurs Agricoles</p>
+        </td>
+      </tr>
+      <!-- White logo band -->
+      <tr>
+        <td style="background:#ffffff;padding:20px 28px;text-align:center;border-left:6px solid #f97316;border-right:6px solid #16a34a;">
+          <img
+            src="${LOGO_URL}"
+            alt="FENAPPACI Logo"
+            width="90"
+            height="90"
+            style="display:inline-block;border-radius:50%;border:3px solid #f97316;box-shadow:0 0 0 3px #16a34a;object-fit:cover;"
+          />
+          <p style="margin:10px 0 0;font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#1a1a1a;letter-spacing:1px;">FENAPPACI</p>
+        </td>
+      </tr>
+      <!-- Green bottom band -->
+      <tr>
+        <td style="background:#16a34a;padding:14px 28px 18px;text-align:center;">
+          <p style="margin:0;font-family:Arial,sans-serif;font-size:17px;font-weight:700;color:#ffffff;">${title}</p>
+          <p style="margin:5px 0 0;font-family:Arial,sans-serif;font-size:13px;color:rgba(255,255,255,0.85);">${subtitle}</p>
+        </td>
+      </tr>
+    </table>`;
+}
+
 /* ── Email: notification to FENAPPACI (always French internally) ── */
 function buildAdminEmail(r: {
   fullName: string; companyName?: string | null; email: string;
@@ -97,10 +133,7 @@ function buildAdminEmail(r: {
     subject,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
-        <div style="background:linear-gradient(135deg,#f97316 0%,#16a34a 100%);padding:32px 28px;">
-          <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;">🌿 FENAPPACI — ${labels.title}</h1>
-          <p style="margin:6px 0 0;color:rgba(255,255,255,.85);font-size:14px;">${labels.subtitle}</p>
-        </div>
+        ${emailHeader(labels.title, labels.subtitle)}
         <div style="padding:28px;">
           <table style="width:100%;border-collapse:collapse;font-size:14px;">${tableRows}</table>
           <div style="margin-top:20px;padding:14px 16px;background:#fef3c7;border-left:4px solid #f97316;border-radius:4px;">
@@ -145,12 +178,7 @@ function buildClientEmail(r: {
     subject: t.subject,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);">
-        <div style="background:linear-gradient(135deg,#f97316 0%,#16a34a 100%);padding:32px 28px;text-align:center;">
-          <div style="width:64px;height:64px;background:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;">
-            <span style="font-size:32px;">🌿</span>
-          </div>
-          <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700;">${t.heading}</h1>
-        </div>
+        ${emailHeader(t.heading, "fenappaci.com")}
         <div style="padding:32px 28px;">
           <p style="margin:0 0 16px;font-size:16px;color:#1f2937;">${t.greeting}</p>
           <p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.6;">${t.body}</p>
