@@ -58,8 +58,13 @@ function createTransporter() {
   });
 }
 
-/* ── Shared logo URL (absolute, works in email clients) ── */
-const LOGO_URL = "https://fenappaci.com/images/fenappaci-logo-email.png";
+/* ── Shared logo URL ──
+   Use the live Replit domain (always public) or fall back to fenappaci.com */
+const SITE_DOMAIN =
+  process.env.REPLIT_DOMAINS?.split(",")[0] ||
+  process.env.REPLIT_DEV_DOMAIN ||
+  "fenappaci.com";
+const LOGO_URL = `https://${SITE_DOMAIN}/images/fenappaci-logo-email.png`;
 
 /* ── Professional letterhead email header ── */
 function emailHeader(title: string, subtitle: string) {
