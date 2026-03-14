@@ -17,6 +17,10 @@ import mangueImg from '@assets/Sans-titre-75_1773494803091.jpg';
 import plantainImg from '@assets/istockphoto-1126717193-170667a_1773494803135.jpg';
 import kolaImg from '@assets/AdobeStock_18586675_1773494803179.jpeg';
 import cotonImg from '@assets/coton-environnement_1773494803227.jpg';
+import ananasImg from '@assets/shutterstock_124270765_ananas_comprese_1773495814051.jpg';
+import mandarineImg from '@assets/tangerines-1721633_1920-800x533_1773495814102.jpg';
+import taroImg from '@assets/taro_1773495814138.jpg';
+import maisBlanImg from '@assets/Mais-blanc-AdobeStock_487904876-scaled.jpeg_1773495814181.webp';
 
 export type Category = 'export' | 'fruits' | 'food' | 'vegetables';
 
@@ -169,7 +173,7 @@ export const products: Product[] = [
     id: 'mandarin',
     name: { fr: 'Mandarine', en: 'Mandarin' },
     category: 'fruits',
-    image: u('photo-1490885578174-acda8905c2c6'),
+    image: mandarineImg,
     description: {
       fr: 'Mandarines fraîches, faciles à éplucher et délicieusement sucrées.',
       en: 'Fresh mandarins, easy to peel and deliciously sweet.'
@@ -203,6 +207,17 @@ export const products: Product[] = [
     description: {
       fr: 'Pastèques rafraîchissantes et sucrées, idéales pour les marchés d\'exportation.',
       en: 'Refreshing and sweet watermelons, ideal for export markets.'
+    }
+  },
+
+  {
+    id: 'pineapple',
+    name: { fr: 'Ananas', en: 'Pineapple' },
+    category: 'fruits',
+    image: ananasImg,
+    description: {
+      fr: 'Ananas sucrés et juteux, cultivés en Côte d\'Ivoire, riches en vitamines et enzymes.',
+      en: 'Sweet and juicy pineapples grown in Ivory Coast, rich in vitamins and enzymes.'
     }
   },
 
@@ -251,7 +266,7 @@ export const products: Product[] = [
     id: 'white-corn',
     name: { fr: 'Maïs Blanc', en: 'White Corn' },
     category: 'food',
-    image: u('photo-1569870499705-504209102861'),
+    image: maisBlanImg,
     description: {
       fr: 'Maïs blanc de qualité supérieure, utilisé dans la fabrication de farine et de semoule.',
       en: 'Superior quality white corn used in the manufacture of flour and semolina.'
@@ -271,7 +286,7 @@ export const products: Product[] = [
     id: 'taro',
     name: { fr: 'Taro', en: 'Taro' },
     category: 'food',
-    image: u('photo-1618897996318-5a901fa6ca71'),
+    image: taroImg,
     description: {
       fr: 'Taro frais, riche en fibres et en minéraux essentiels.',
       en: 'Fresh taro, rich in fiber and essential minerals.'
