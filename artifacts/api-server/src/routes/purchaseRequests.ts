@@ -59,38 +59,95 @@ function createTransporter() {
 }
 
 /* ── Shared logo URL (absolute, works in email clients) ── */
-const LOGO_URL = "https://fenappaci.com/images/fenappaci-logo-transparent.png";
+const LOGO_URL = "https://fenappaci.com/images/fenappaci-logo-email.png";
 
-/* ── Shared email header with orange / white logo / green bands ── */
+/* ── Professional letterhead email header ── */
 function emailHeader(title: string, subtitle: string) {
   return `
     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-      <!-- Orange top band -->
+
+      <!-- 1. TOP ACCENT STRIP: thin orange bar -->
       <tr>
-        <td style="background:#f97316;padding:18px 28px 0;text-align:center;">
-          <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.75);text-transform:uppercase;">Fédération Nationale des Producteurs &amp; Promoteurs Agricoles</p>
+        <td style="background:#f97316;height:6px;font-size:0;line-height:0;">&nbsp;</td>
+      </tr>
+
+      <!-- 2. WHITE LETTERHEAD BAND: logo left · separator · company info right -->
+      <tr>
+        <td style="background:#ffffff;padding:24px 32px;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+            <tr>
+
+              <!-- Logo -->
+              <td style="width:110px;vertical-align:middle;">
+                <img
+                  src="${LOGO_URL}"
+                  alt="FENAPPACI"
+                  width="100"
+                  height="100"
+                  style="display:block;border-radius:8px;border:2px solid #f0f0f0;box-shadow:0 2px 8px rgba(0,0,0,0.10);"
+                />
+              </td>
+
+              <!-- Vertical separator -->
+              <td style="width:1px;background:#e5e7eb;padding:0 20px;vertical-align:middle;">
+                <div style="width:1px;height:72px;background:#e5e7eb;"></div>
+              </td>
+
+              <!-- Company info -->
+              <td style="vertical-align:middle;padding-left:20px;">
+                <p style="margin:0;font-family:Arial,sans-serif;font-size:26px;font-weight:900;color:#f97316;letter-spacing:1px;line-height:1;">FENAPPACI</p>
+                <p style="margin:5px 0 0;font-family:Arial,sans-serif;font-size:11px;color:#4b5563;line-height:1.5;font-weight:400;">
+                  Fédération Nationale des Producteurs<br>&amp; Promoteurs Agricoles de Côte d'Ivoire
+                </p>
+                <table cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">
+                  <tr>
+                    <td style="font-family:Arial,sans-serif;font-size:10px;color:#16a34a;font-weight:700;padding-right:12px;">🌐 fenappaci.com</td>
+                    <td style="font-family:Arial,sans-serif;font-size:10px;color:#16a34a;font-weight:700;">✉ info@fenappaci.com</td>
+                  </tr>
+                </table>
+              </td>
+
+              <!-- Right badge: Côte d'Ivoire export -->
+              <td style="vertical-align:middle;text-align:right;width:90px;">
+                <table cellpadding="0" cellspacing="0" border="0" style="margin-left:auto;border:1px solid #dcfce7;border-radius:8px;overflow:hidden;background:#f0fdf4;">
+                  <tr>
+                    <td style="background:#16a34a;padding:4px 10px;text-align:center;">
+                      <p style="margin:0;font-family:Arial,sans-serif;font-size:9px;font-weight:700;color:#ffffff;letter-spacing:1.5px;text-transform:uppercase;">Export</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:5px 10px 6px;text-align:center;">
+                      <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;color:#15803d;font-weight:600;">🇨🇮 Côte d'Ivoire</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+
+            </tr>
+          </table>
         </td>
       </tr>
-      <!-- White logo band -->
+
+      <!-- 3. BICOLOR DIVIDER: orange left half | green right half -->
       <tr>
-        <td style="background:#ffffff;padding:20px 28px;text-align:center;border-left:6px solid #f97316;border-right:6px solid #16a34a;">
-          <img
-            src="${LOGO_URL}"
-            alt="FENAPPACI Logo"
-            width="90"
-            height="90"
-            style="display:inline-block;border-radius:50%;border:3px solid #f97316;box-shadow:0 0 0 3px #16a34a;object-fit:cover;"
-          />
-          <p style="margin:10px 0 0;font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#1a1a1a;letter-spacing:1px;">FENAPPACI</p>
+        <td style="padding:0;font-size:0;line-height:0;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+            <tr>
+              <td style="background:#f97316;height:4px;width:50%;font-size:0;">&nbsp;</td>
+              <td style="background:#16a34a;height:4px;width:50%;font-size:0;">&nbsp;</td>
+            </tr>
+          </table>
         </td>
       </tr>
-      <!-- Green bottom band -->
+
+      <!-- 4. DARK TITLE BAND -->
       <tr>
-        <td style="background:#16a34a;padding:14px 28px 18px;text-align:center;">
-          <p style="margin:0;font-family:Arial,sans-serif;font-size:17px;font-weight:700;color:#ffffff;">${title}</p>
-          <p style="margin:5px 0 0;font-family:Arial,sans-serif;font-size:13px;color:rgba(255,255,255,0.85);">${subtitle}</p>
+        <td style="background:#14532d;padding:20px 32px;">
+          <p style="margin:0;font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:0.3px;">${title}</p>
+          <p style="margin:5px 0 0;font-family:Arial,sans-serif;font-size:12px;color:rgba(255,255,255,0.70);">${subtitle}</p>
         </td>
       </tr>
+
     </table>`;
 }
 
