@@ -3,12 +3,22 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Handshake, Globe2, Briefcase, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SEO from "@/components/SEO";
 
 export default function Partnership() {
   const { t } = useLanguage();
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        titleFr="Partenariat Agricole Côte d'Ivoire – Devenez Partenaire FENAPPACI"
+        titleEn="Agricultural Partnership Ivory Coast – Become a FENAPPACI Partner"
+        descFr="Rejoignez le réseau de partenaires FENAPPACI. Partenariats commerciaux, distribution et co-investissement dans l'agriculture de Côte d'Ivoire."
+        descEn="Join the FENAPPACI partner network. Commercial partnerships, distribution and co-investment in Ivory Coast agriculture."
+        canonical="/partnerships"
+        keywordsFr="partenariat agricole Côte d'Ivoire, partenaire FENAPPACI, réseau exportateurs Afrique, collaboration agricole"
+        keywordsEn="agricultural partnership Ivory Coast, FENAPPACI partner, African exporters network, agricultural collaboration"
+      />
       <PageHero
         title={t('partnership.hero.title')}
         subtitle={t('partnership.hero.subtitle')}
@@ -81,7 +91,7 @@ export default function Partnership() {
           </div>
 
           <div className="mt-12">
-            <Link href="/request">
+            <Link href="/request-purchase">
               <Button size="lg" className="bg-white text-primary hover:bg-gray-100 h-14 px-8 rounded-full text-lg shadow-xl">
                 {t('partnership.cta.btn')}
               </Button>

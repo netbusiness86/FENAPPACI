@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHero } from '@/components/layout/PageHero';
 import { Link } from 'wouter';
 import { Calendar, Tag, ArrowRight, Megaphone, Leaf, Handshake, TrendingUp, Globe } from 'lucide-react';
+import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 
 type ArticleCategory = 'campaign' | 'export' | 'partnership' | 'company' | 'market';
@@ -116,6 +117,15 @@ export default function News() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        titleFr="Actualités Agricoles Côte d'Ivoire – FENAPPACI News"
+        titleEn="Agricultural News Ivory Coast – FENAPPACI News"
+        descFr="Dernières actualités de FENAPPACI et du secteur agricole ivoirien. Campagnes, marchés, partenariats et exportations de cacao, cajou et café."
+        descEn="Latest news from FENAPPACI and the Ivorian agricultural sector. Campaigns, markets, partnerships and exports of cocoa, cashew and coffee."
+        canonical="/news"
+        keywordsFr="actualités agricoles Côte d'Ivoire, news FENAPPACI, marché cacao, campagne cajou Afrique"
+        keywordsEn="agricultural news Ivory Coast, FENAPPACI news, cocoa market, cashew campaign Africa"
+      />
       <PageHero
         title={t('news.title')}
         subtitle={t('news.subtitle')}

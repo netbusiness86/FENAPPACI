@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Search, ShoppingCart } from "lucide-react";
+import SEO from "@/components/SEO";
 
 export default function Products() {
   const { lang, t } = useLanguage();
@@ -30,6 +31,30 @@ export default function Products() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
+      <SEO
+        titleFr="Produits Agricoles Côte d'Ivoire – Catalogue Export FENAPPACI"
+        titleEn="Agricultural Products Ivory Coast – FENAPPACI Export Catalog"
+        descFr="Découvrez nos 36 produits agricoles à l'export : cacao, noix de cajou, café, hévéa, huile de palme, fruits tropicaux et légumes de Côte d'Ivoire. Qualité premium certifiée."
+        descEn="Explore our 36 export agricultural products: cocoa, cashew nuts, coffee, rubber, palm oil, tropical fruits and vegetables from Ivory Coast. Certified premium quality."
+        canonical="/agricultural-products"
+        keywordsFr="produits agricoles Côte d'Ivoire, cacao export, noix de cajou fournisseur, café Côte d'Ivoire, fruits tropicaux export, hévéa caoutchouc"
+        keywordsEn="agricultural products Ivory Coast, cocoa export, cashew nuts supplier Africa, coffee Ivory Coast, tropical fruits export, rubber Ivory Coast"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Agricultural Export Products – FENAPPACI",
+          "description": "Premium agricultural products from Ivory Coast available for export",
+          "numberOfItems": 36,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Cocoa Beans – Ivory Coast" },
+            { "@type": "ListItem", "position": 2, "name": "Cashew Nuts – Ivory Coast" },
+            { "@type": "ListItem", "position": 3, "name": "Coffee – Ivory Coast" },
+            { "@type": "ListItem", "position": 4, "name": "Palm Oil – Ivory Coast" },
+            { "@type": "ListItem", "position": 5, "name": "Natural Rubber – Ivory Coast" },
+            { "@type": "ListItem", "position": 6, "name": "Tropical Fruits – Ivory Coast" }
+          ]
+        }}
+      />
       <PageHero
         title={t('products.title')}
         subtitle={t('products.subtitle')}
@@ -79,8 +104,11 @@ export default function Products() {
                   <div className="relative h-56 overflow-hidden">
                     <img
                       src={product.image}
-                      alt={product.name[lang]}
+                      alt={`${product.name[lang]} – ${lang === 'fr' ? 'produit agricole de Côte d\'Ivoire à l\'export' : 'agricultural product from Ivory Coast for export'}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                      width={600}
+                      height={400}
                     />
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-primary/90 hover:bg-primary text-white backdrop-blur-sm shadow-sm">
@@ -104,7 +132,7 @@ export default function Products() {
                     <p className="text-muted-foreground text-sm flex-grow mb-6 line-clamp-3">
                       {product.description[lang]}
                     </p>
-                    <Link href={`/request?product=${encodeURIComponent(product.name.fr)}`}>
+                    <Link href={`/request-purchase?product=${encodeURIComponent(product.name.fr)}`}>
                       <Button className="w-full bg-foreground hover:bg-primary text-white transition-colors group-hover:shadow-md">
                         <ShoppingCart className="w-4 h-4 mr-2" />
                         {t('products.request')}

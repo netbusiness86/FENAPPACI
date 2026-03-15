@@ -3,12 +3,22 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { BarChart3, Factory, ShieldCheck, Zap } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SEO from "@/components/SEO";
 
 export default function Investment() {
   const { t } = useLanguage();
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        titleFr="Investir en Agriculture – Côte d'Ivoire | FENAPPACI"
+        titleEn="Invest in Agriculture – Ivory Coast | FENAPPACI"
+        descFr="Investissez dans l'agriculture ivoirienne avec FENAPPACI. Opportunités d'investissement dans le cacao, les noix de cajou, le café et les cultures d'exportation en Côte d'Ivoire."
+        descEn="Invest in Ivorian agriculture with FENAPPACI. Investment opportunities in cocoa, cashew nuts, coffee and export crops in Ivory Coast."
+        canonical="/invest-ivory-coast"
+        keywordsFr="investissement agricole Côte d'Ivoire, investir cacao Afrique, opportunités agricoles Abidjan, financement agriculture ivoirienne"
+        keywordsEn="agricultural investment Ivory Coast, invest cocoa Africa, agricultural opportunities Abidjan, Ivorian agriculture financing"
+      />
       <PageHero
         title={t('investment.hero.title')}
         subtitle={t('investment.hero.subtitle')}

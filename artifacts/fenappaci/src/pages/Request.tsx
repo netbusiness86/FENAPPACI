@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
+import SEO from "@/components/SEO";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -76,6 +77,15 @@ export default function Request() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
+      <SEO
+        titleFr="Commander des Produits Agricoles – Demande d'Achat FENAPPACI"
+        titleEn="Order Agricultural Products – Purchase Request FENAPPACI"
+        descFr="Passez une commande de produits agricoles de Côte d'Ivoire. Cacao, noix de cajou, café, fruits tropicaux – expédition internationale depuis Abidjan."
+        descEn="Place an order for agricultural products from Ivory Coast. Cocoa, cashew nuts, coffee, tropical fruits – international shipping from Abidjan."
+        canonical="/request-purchase"
+        keywordsFr="commander cacao Côte d'Ivoire, acheter noix de cajou Afrique, commande produits agricoles FENAPPACI, demande achat exportation"
+        keywordsEn="order cocoa Ivory Coast, buy cashew nuts Africa, order agricultural products FENAPPACI, purchase request export"
+      />
       <PageHero
         title={t('request.hero.title')}
         subtitle={t('request.hero.subtitle')}

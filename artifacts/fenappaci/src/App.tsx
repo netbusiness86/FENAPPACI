@@ -46,11 +46,45 @@ function Router() {
       <Route path="/">
         <Layout><Home /></Layout>
       </Route>
+
+      {/* SEO-friendly primary URLs */}
+      <Route path="/about-fenappaci">
+        <Layout><About /></Layout>
+      </Route>
+      <Route path="/agricultural-products">
+        <Layout><Products /></Layout>
+      </Route>
+      <Route path="/export-ivory-coast">
+        <Layout><Export /></Layout>
+      </Route>
+      <Route path="/request-purchase">
+        <Layout><Request /></Layout>
+      </Route>
+      <Route path="/invest-ivory-coast">
+        <Layout><Investment /></Layout>
+      </Route>
+      <Route path="/partnerships">
+        <Layout><Partnership /></Layout>
+      </Route>
+      <Route path="/market-prices">
+        <Layout><MarketPrices /></Layout>
+      </Route>
+      <Route path="/news">
+        <Layout><News /></Layout>
+      </Route>
+      <Route path="/contact">
+        <Layout><Contact /></Layout>
+      </Route>
+
+      {/* Legacy URL aliases (kept for backward compatibility) */}
       <Route path="/about">
         <Layout><About /></Layout>
       </Route>
       <Route path="/products">
         <Layout><Products /></Layout>
+      </Route>
+      <Route path="/export">
+        <Layout><Export /></Layout>
       </Route>
       <Route path="/request">
         <Layout><Request /></Layout>
@@ -61,18 +95,10 @@ function Router() {
       <Route path="/partnership">
         <Layout><Partnership /></Layout>
       </Route>
-      <Route path="/export">
-        <Layout><Export /></Layout>
-      </Route>
-      <Route path="/contact">
-        <Layout><Contact /></Layout>
-      </Route>
       <Route path="/marche">
         <Layout><MarketPrices /></Layout>
       </Route>
-      <Route path="/news">
-        <Layout><News /></Layout>
-      </Route>
+
       <Route>
         <Layout><NotFound /></Layout>
       </Route>

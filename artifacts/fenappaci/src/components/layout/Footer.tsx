@@ -7,12 +7,12 @@ export function Footer() {
 
   const quickLinks = [
     { path: '/', label: t('nav.home') },
-    { path: '/about', label: t('nav.about') },
-    { path: '/products', label: t('nav.products') },
-    { path: '/marche', label: t('nav.market') },
-    { path: '/investment', label: t('nav.investment') },
-    { path: '/export', label: t('nav.export') },
-    { path: '/partnership', label: t('nav.partnership') },
+    { path: '/about-fenappaci', label: t('nav.about') },
+    { path: '/agricultural-products', label: t('nav.products') },
+    { path: '/market-prices', label: t('nav.market') },
+    { path: '/invest-ivory-coast', label: t('nav.investment') },
+    { path: '/export-ivory-coast', label: t('nav.export') },
+    { path: '/partnerships', label: t('nav.partnership') },
     { path: '/news', label: t('nav.news') },
     { path: '/contact', label: t('nav.contact') },
   ];
@@ -90,13 +90,13 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/request" className="text-green-200 hover:text-orange-300 transition-colors flex items-center gap-1.5 text-sm group">
+                <Link href="/request-purchase" className="text-green-200 hover:text-orange-300 transition-colors flex items-center gap-1.5 text-sm group">
                   <ChevronRight className="w-3.5 h-3.5 text-orange-400 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                   {t('nav.request_quote')}
                 </Link>
               </li>
               <li>
-                <Link href="/marche" className="text-green-200 hover:text-orange-300 transition-colors flex items-center gap-1.5 text-sm group">
+                <Link href="/market-prices" className="text-green-200 hover:text-orange-300 transition-colors flex items-center gap-1.5 text-sm group">
                   <ChevronRight className="w-3.5 h-3.5 text-orange-400 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                   {t('nav.market')}
                 </Link>

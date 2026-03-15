@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import SEO from '@/components/SEO';
 import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
 import { TrendingUp, TrendingDown, RefreshCw, Clock, BarChart3, Globe, Sprout, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -191,6 +192,15 @@ export default function MarketPrices() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        titleFr="Prix du Marché – Cacao, Cajou, Café Côte d'Ivoire | FENAPPACI"
+        titleEn="Market Prices – Cocoa, Cashew, Coffee Ivory Coast | FENAPPACI"
+        descFr="Suivez en temps réel les prix du marché des produits agricoles ivoiriens : cacao, noix de cajou, café, hévéa, huile de palme. Données actualisées pour importateurs et acheteurs."
+        descEn="Follow real-time market prices of Ivorian agricultural products: cocoa, cashew nuts, coffee, rubber, palm oil. Updated data for importers and buyers."
+        canonical="/market-prices"
+        keywordsFr="prix cacao Côte d'Ivoire, prix noix de cajou Afrique, cours café ivoirien, prix marché agricole Abidjan"
+        keywordsEn="cocoa price Ivory Coast, cashew nuts price Africa, Ivorian coffee price, agricultural market prices Abidjan"
+      />
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white overflow-hidden pt-32 pb-20">
         <div className="absolute inset-0 opacity-10" style={{
@@ -372,7 +382,7 @@ export default function MarketPrices() {
         <section className="mt-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl p-10 text-white text-center shadow-xl shadow-orange-200">
           <h2 className="text-3xl font-display font-bold mb-3">{t('market.cta.title')}</h2>
           <p className="text-orange-100 mb-8 max-w-2xl mx-auto">{t('market.cta.desc')}</p>
-          <a href="/request">
+          <a href="/request-purchase">
             <Button size="lg" className="bg-white text-orange-600 hover:bg-orange-50 font-bold rounded-full px-10 shadow-lg">
               {t('market.cta.btn')}
             </Button>

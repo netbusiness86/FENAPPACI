@@ -7,12 +7,22 @@ import { Button } from "@/components/ui/button";
 import WorldMapBuyers from "@/components/WorldMapBuyers";
 import TransportScene from "@/components/TransportScene";
 import ProductExportRoutes from "@/components/ProductExportRoutes";
+import SEO from "@/components/SEO";
 
 export default function Export() {
   const { lang, t } = useLanguage();
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        titleFr="Export Agricole Côte d'Ivoire – Solutions d'Exportation FENAPPACI"
+        titleEn="Agricultural Export Ivory Coast – FENAPPACI Export Solutions"
+        descFr="FENAPPACI organise l'export de produits agricoles de Côte d'Ivoire vers 30+ pays. Transport maritime, aérien et terrestre. Conformité phytosanitaire et douanière internationale."
+        descEn="FENAPPACI organizes agricultural product exports from Ivory Coast to 30+ countries. Sea, air and land transport. International phytosanitary and customs compliance."
+        canonical="/export-ivory-coast"
+        keywordsFr="export agricole Côte d'Ivoire, exportation cacao, transport maritime Abidjan, logistique export Afrique, normes phytosanitaires export"
+        keywordsEn="agricultural export Ivory Coast, cocoa export logistics, maritime transport Abidjan, Africa export logistics, phytosanitary standards export"
+      />
       <PageHero
         title={t('export.hero.title')}
         subtitle={t('export.hero.subtitle')}
@@ -249,7 +259,7 @@ export default function Export() {
               ? 'Contactez notre équipe export pour obtenir un devis FOB/CIF personnalisé.'
               : 'Contact our export team for a personalized FOB/CIF quote.'}
           </p>
-          <Link href="/request">
+          <Link href="/request-purchase">
             <Button size="lg" className="bg-white text-orange-700 hover:bg-orange-50 rounded-full px-10 h-14 font-bold shadow-xl">
               {lang === 'fr' ? 'Demander un Devis Export' : 'Request Export Quote'}
             </Button>

@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Facebook } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SEO from "@/components/SEO";
 const Logo3D = lazy(() => import('@/components/Logo3D'));
 
 export default function Contact() {
@@ -28,6 +29,33 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
+      <SEO
+        titleFr="Contact FENAPPACI – Abidjan, Côte d'Ivoire"
+        titleEn="Contact FENAPPACI – Abidjan, Ivory Coast"
+        descFr="Contactez FENAPPACI à Abidjan. Bureau : Cocody Angré Château, Immeuble BATIM 2ème Étage Porte 216. Tél: +225 07 49 01 27 25. Email: info@fenappaci.com"
+        descEn="Contact FENAPPACI in Abidjan. Office: Cocody Angré Château, Immeuble BATIM 2nd Floor Door 216. Tel: +225 07 49 01 27 25. Email: info@fenappaci.com"
+        canonical="/contact"
+        keywordsFr="contact FENAPPACI, bureau Abidjan Côte d'Ivoire, exportateur agricole contact, info@fenappaci.com"
+        keywordsEn="contact FENAPPACI, Abidjan office Ivory Coast, agricultural exporter contact, info@fenappaci.com"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact FENAPPACI",
+          "url": "https://fenappaci.com/contact",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "FENAPPACI",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Immeuble BATIM 2ème Étage Porte 216, Cocody Angré Château",
+              "addressLocality": "Abidjan",
+              "addressCountry": "CI"
+            },
+            "telephone": "+225-07-49-01-27-25",
+            "email": "info@fenappaci.com"
+          }
+        }}
+      />
       <PageHero
         title={t('contact.hero.title')}
         subtitle={t('contact.hero.subtitle')}

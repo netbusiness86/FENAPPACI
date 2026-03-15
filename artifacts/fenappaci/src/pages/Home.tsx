@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2, Globe, TrendingUp, Users, Star, ChevronRight,
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import SEO from '@/components/SEO';
 const Logo3D = lazy(() => import('@/components/Logo3D'));
 
 const TESTIMONIALS = [
@@ -51,6 +52,15 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        titleFr="Exportateur Agricole Côte d'Ivoire – Cacao, Cajou, Café"
+        titleEn="Agricultural Export Company Ivory Coast – Cocoa, Cashew, Coffee"
+        descFr="FENAPPACI exporte le cacao, les noix de cajou, le café et les fruits tropicaux de Côte d'Ivoire vers les marchés internationaux. Acheteurs, investisseurs – rejoignez notre réseau."
+        descEn="FENAPPACI exports cocoa, cashew nuts, coffee and tropical fruits from Ivory Coast to international markets. Buyers, investors – join our network."
+        canonical="/"
+        keywordsFr="exportateur agricole Côte d'Ivoire, cacao Côte d'Ivoire, noix de cajou Afrique, café ivoirien, FENAPPACI, produits agricoles Côte d'Ivoire, export Abidjan"
+        keywordsEn="agricultural export Ivory Coast, cocoa exporters Africa, cashew nuts suppliers Ivory Coast, FENAPPACI, agricultural products Ivory Coast, export Abidjan"
+      />
 
       {/* Scrolling Announcement Bar */}
       <div className="bg-green-700 text-white text-sm py-2 overflow-hidden sticky top-0 z-40">
@@ -133,18 +143,18 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
-                <Link href="/products">
+                <Link href="/agricultural-products">
                   <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white text-base h-14 px-8 rounded-full shadow-xl shadow-orange-900/40 font-semibold">
                     {t('home.btn.products')}
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <Link href="/request">
+                <Link href="/request-purchase">
                   <Button size="lg" className="bg-white hover:bg-orange-50 text-orange-700 text-base h-14 px-8 rounded-full shadow-xl font-semibold border-0">
                     {t('home.btn.request')}
                   </Button>
                 </Link>
-                <Link href="/partnership">
+                <Link href="/partnerships">
                   <Button size="lg" variant="outline" className="bg-transparent hover:bg-white/10 text-white border-white/40 text-base h-14 px-8 rounded-full backdrop-blur-md font-semibold">
                     {t('home.btn.partner')}
                   </Button>
@@ -285,7 +295,7 @@ export default function Home() {
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900">{t('home.products.title')}</h2>
             </div>
-            <Link href="/products">
+            <Link href="/agricultural-products">
               <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50 rounded-full px-6 flex-shrink-0">
                 {t('home.products.all')} <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
@@ -389,7 +399,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">{t('home.cta.title')}</h2>
           <p className="text-xl text-green-100/90 mb-10 max-w-2xl mx-auto">{t('home.cta.subtitle')}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/request">
+            <Link href="/request-purchase">
               <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-10 h-14 text-base rounded-full shadow-2xl shadow-orange-900/30 font-semibold">
                 {t('home.cta.btn')}
               </Button>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://fenappaci.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/about-fenappaci</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/about-fenappaci"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/about-fenappaci"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/agricultural-products</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/agricultural-products"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/agricultural-products"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/export-ivory-coast</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/export-ivory-coast"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/export-ivory-coast"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/request-purchase</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/request-purchase"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/request-purchase"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/invest-ivory-coast</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/invest-ivory-coast"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/invest-ivory-coast"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/partnerships</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/partnerships"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/partnerships"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/market-prices</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/market-prices"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/market-prices"/>
+    <changefreq>daily</changefreq>
+    <priority>0.70</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/news</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/news"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/news"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://fenappaci.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fenappaci.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fenappaci.com/contact"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+    <lastmod>2025-01-01</lastmod>
+  </url>
+
+</urlset>

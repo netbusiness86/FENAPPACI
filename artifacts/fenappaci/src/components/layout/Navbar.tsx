@@ -31,16 +31,16 @@ export function Navbar() {
   useEffect(() => { setMobileOpen(false); }, [location]);
 
   const navLinks = [
-    { href: '/',            label: t('nav.home'),          icon: '🏠' },
-    { href: '/about',       label: t('nav.about'),         icon: '🏢' },
-    { href: '/products',    label: t('nav.products'),      icon: '🌿' },
-    { href: '/export',      label: t('nav.export'),        icon: '🚢' },
-    { href: '/investment',  label: t('nav.investment'),    icon: '📈' },
-    { href: '/partnership', label: t('nav.partnership'),   icon: '🤝' },
-    { href: '/request',     label: lang === 'fr' ? 'Commander' : 'Order', icon: '🛒' },
-    { href: '/marche',      label: t('nav.market'),        icon: '📊' },
-    { href: '/news',        label: t('nav.news'),          icon: '📰' },
-    { href: '/contact',     label: t('nav.contact'),       icon: '✉️' },
+    { href: '/',                    label: t('nav.home'),          icon: '🏠' },
+    { href: '/about-fenappaci',     label: t('nav.about'),         icon: '🏢' },
+    { href: '/agricultural-products', label: t('nav.products'),    icon: '🌿' },
+    { href: '/export-ivory-coast',  label: t('nav.export'),        icon: '🚢' },
+    { href: '/invest-ivory-coast',  label: t('nav.investment'),    icon: '📈' },
+    { href: '/partnerships',        label: t('nav.partnership'),   icon: '🤝' },
+    { href: '/request-purchase',    label: lang === 'fr' ? 'Commander' : 'Order', icon: '🛒' },
+    { href: '/market-prices',       label: t('nav.market'),        icon: '📊' },
+    { href: '/news',                label: t('nav.news'),          icon: '📰' },
+    { href: '/contact',             label: t('nav.contact'),       icon: '✉️' },
   ];
 
   const isActive = (href: string) =>
@@ -152,7 +152,7 @@ export function Navbar() {
               </button>
 
               {/* Quote CTA */}
-              <Link href="/request">
+              <Link href="/request-purchase">
                 <button className="flex items-center gap-1.5 px-4 py-2 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white text-xs font-bold rounded-full shadow-md shadow-orange-200 hover:shadow-orange-300 transition-all duration-200 hover:scale-105">
                   {t('nav.request_quote')}
                 </button>
@@ -279,7 +279,7 @@ export function Navbar() {
                 </div>
 
                 {/* CTA */}
-                <Link href="/request" onClick={() => setMobileOpen(false)}>
+                <Link href="/request-purchase" onClick={() => setMobileOpen(false)}>
                   <button className="w-full py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-2xl shadow-lg shadow-orange-900/40 transition-all text-sm flex items-center justify-center gap-2">
                     <span>🛒</span>
                     {t('nav.request_quote')}

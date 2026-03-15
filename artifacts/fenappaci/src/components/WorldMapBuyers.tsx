@@ -356,7 +356,7 @@ export default function WorldMapBuyers() {
                   </p>
                 </div>
                 <a
-                  href="/request"
+                  href="/request-purchase"
                   className="mt-2 px-4 py-2 rounded-xl text-sm font-bold text-white text-center transition-all hover:opacity-90"
                   style={{ background: selectedBuyer.color }}
                 >

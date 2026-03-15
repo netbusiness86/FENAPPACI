@@ -4,6 +4,7 @@ import { CheckCircle2, Target, Eye, Sprout, Globe, Handshake, TrendingUp, Packag
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const ACTIVITIES = [
   {
@@ -61,6 +62,15 @@ export default function About() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        titleFr="À Propos de FENAPPACI – Fédération Agricole de Côte d'Ivoire"
+        titleEn="About FENAPPACI – Ivory Coast Agricultural Federation"
+        descFr="FENAPPACI est la Fédération Nationale des Producteurs & Promoteurs Agricoles de Côte d'Ivoire. Découvrez notre mission, notre vision et nos activités d'exportation agricole."
+        descEn="FENAPPACI is the National Federation of Agricultural Producers & Promoters of Ivory Coast. Discover our mission, vision and agricultural export activities."
+        canonical="/about-fenappaci"
+        keywordsFr="FENAPPACI à propos, fédération agricole Côte d'Ivoire, producteurs agricoles Abidjan, exportateurs Côte d'Ivoire"
+        keywordsEn="FENAPPACI about, agricultural federation Ivory Coast, agricultural producers Abidjan, Ivory Coast exporters"
+      />
       <PageHero
         title={t('nav.about')}
         subtitle={t('about.hero.subtitle')}
@@ -262,7 +272,7 @@ export default function About() {
                 {lang === 'fr' ? 'Nous Contacter' : 'Contact Us'}
               </Button>
             </Link>
-            <Link href="/partnership">
+            <Link href="/partnerships">
               <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50 rounded-full px-8 h-12">
                 {lang === 'fr' ? 'Devenir Partenaire' : 'Become a Partner'}
               </Button>
