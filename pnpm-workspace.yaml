@@ -12,7 +12,7 @@ catalog:
   '@replit/vite-plugin-runtime-error-modal': ^0.0.6
   '@tailwindcss/vite': ^4.1.14
   '@tanstack/react-query': ^5.90.21
-  '@types/node': ^25.3.3
+  '@types/node': ^25.3.5
   '@types/react': ^19.2.0
   '@types/react-dom': ^19.2.0
   '@vitejs/plugin-react': ^5.0.4
@@ -119,3 +119,8 @@ overrides:
   rollup>@rollup/rollup-win32-ia32-msvc: '-'
   rollup>@rollup/rollup-win32-x64-gnu: '-'
   rollup>@rollup/rollup-win32-x64-msvc: '-'
+
+packageExtensions:
+  drizzle-kit@1.0.0-beta.22:
+    peerDependencies:
+      drizzle-orm: 1.0.0-beta.22
