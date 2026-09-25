@@ -1,14 +1,12 @@
 import { defineConfig } from "drizzle-kit";
 import path from "path";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL, ensure the database is provisioned");
-}
+const url = process.env.DATABASE_URL ?? process.env.NETLIFY_DB_URL;
 
 export default defineConfig({
   schema: path.join(__dirname, "./src/schema/index.ts"),
+  // Netlify applies migrations from this directory automatically on deploy.
+  out: path.join(__dirname, "../../netlify/database/migrations"),
   dialect: "postgresql",
-  dbCredentials: {
-    url: process.env.DATABASE_URL,
-  },
+  ...(url && { dbCredentials: { url } }),
 });

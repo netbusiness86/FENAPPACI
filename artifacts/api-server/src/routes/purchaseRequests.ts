@@ -59,8 +59,9 @@ function createTransporter() {
 }
 
 /* ── Shared logo URL ──
-   Use the live Replit domain (always public) or fall back to fenappaci.com */
+   Use the live Netlify/Replit domain (always public) or fall back to fenappaci.com */
 const SITE_DOMAIN =
+  process.env.URL?.replace(/^https?:\/\//, "") ||
   process.env.REPLIT_DOMAINS?.split(",")[0] ||
   process.env.REPLIT_DEV_DOMAIN ||
   "fenappaci.com";

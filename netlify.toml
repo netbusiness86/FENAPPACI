@@ -1,0 +1,28 @@
+[build]
+  command = "pnpm --filter @workspace/fenappaci run build"
+  publish = "artifacts/fenappaci/dist/public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NODE_ENV = "production"
+  BASE_PATH = "/"
+  # Only used to satisfy the Vite config; no dev server runs during the build.
+  PORT = "3000"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "pnpm --filter @workspace/fenappaci run dev"
+  targetPort = 5173
+  framework = "#custom"
